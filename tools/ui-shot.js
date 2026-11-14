@@ -4,7 +4,7 @@
  *
  *   node tools/ui-shot.js <file.html | URL> [...]   複数指定可
  *     --name <slug>            出力ファイル名の接頭辞（既定: 対象から生成）
- *     --viewports m,t,d        mobile(390) / tablet(820) / desktop(1440)。既定は全部
+ *     --viewports m,t,d        mobile(390) / tablet(820) / laptop(1180) / desktop(1440)。既定は全部
  *     --no-dark                ダークモードの撮影・監査を省く
  *     --strict                 error があれば終了コード 1（CI 用）
  *     --json                   監査結果を JSON で出す
@@ -32,6 +32,7 @@ const SHOTS = path.join(OUT, 'shots');
 const VIEWPORTS = {
   mobile: { width: 390, height: 844, isMobile: true },
   tablet: { width: 820, height: 1180, isMobile: true },
+  laptop: { width: 1180, height: 820, isMobile: false }, // タブレット横〜小型ノート。2 カラムが最も窮屈になる幅
   desktop: { width: 1440, height: 900, isMobile: false },
 };
 const MAX_SHOT_HEIGHT = 3600;
@@ -273,7 +274,7 @@ async function run(argv) {
       console.log(`${a.slice(2)} を記録しました。最終報告でユーザーに必ずこの理由を伝えてください: ${reason}`);
       return 0;
     } else if (a === '--name') opt.name = argv[++i];
-    else if (a === '--viewports') opt.viewports = argv[++i].split(',').map((v) => ({ m: 'mobile', t: 'tablet', d: 'desktop' })[v] || v);
+    else if (a === '--viewports') opt.viewports = argv[++i].split(',').map((v) => ({ m: 'mobile', t: 'tablet', l: 'laptop', d: 'desktop' })[v] || v);
     else if (a === '--no-dark') opt.dark = false;
     else if (a === '--strict') opt.strict = true;
     else if (a === '--json') opt.json = true;
@@ -284,7 +285,7 @@ async function run(argv) {
   if (!opt.targets.length) {
     console.error(
       [
-        '使い方: node tools/ui-shot.js <file.html | URL> [...] [--name slug] [--viewports m,t,d] [--no-dark] [--strict] [--json]',
+        '使い方: node tools/ui-shot.js <file.html | URL> [...] [--name slug] [--viewports m,t,l,d] [--no-dark] [--strict] [--json]',
         '  複数指定可。状態違いも一緒に撮る: node tools/ui-shot.js src/x/index.html "src/x/index.html?empty=1"',
         '  --ack "<理由>"   描画監査の error を意図的な例外として承認',
         '  --skip "<理由>"  描画確認できない事情を記録',

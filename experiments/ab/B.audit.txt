@@ -7,10 +7,12 @@ src/roast-plan/index.html?empty=1: 文字サイズ 14/16/20/40px, 書体 IBM Ple
 スクリーンショット（Read ツールで実際に開いて確認すること。開かないと完了できません）:
   /home/user/testapppapp/.ui-review/shots/src-roast-plan-index-mobile-light.png
   /home/user/testapppapp/.ui-review/shots/src-roast-plan-index-tablet-light.png
+  /home/user/testapppapp/.ui-review/shots/src-roast-plan-index-laptop-light.png
   /home/user/testapppapp/.ui-review/shots/src-roast-plan-index-desktop-light.png
   /home/user/testapppapp/.ui-review/shots/src-roast-plan-index-desktop-dark.png
   /home/user/testapppapp/.ui-review/shots/src-roast-plan-index-empty-1-mobile-light.png
   /home/user/testapppapp/.ui-review/shots/src-roast-plan-index-empty-1-tablet-light.png
+  /home/user/testapppapp/.ui-review/shots/src-roast-plan-index-empty-1-laptop-light.png
   /home/user/testapppapp/.ui-review/shots/src-roast-plan-index-empty-1-desktop-light.png
   /home/user/testapppapp/.ui-review/shots/src-roast-plan-index-empty-1-desktop-dark.png
 
