@@ -1,0 +1,32 @@
+name: design
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  design:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # 静的検査: トークン外の値・生成 UI の癖・a11y の基本。人間が書いたコードにも同じ基準を掛ける
+      - run: node tools/test/run.js
+      - run: node tools/design-lint.js
+      - run: node tools/design-lint.js --tokens
+      # 描画監査: 実際に描画してコントラスト・文字サイズ・タップ領域などを測る
+      - run: npm install --no-save playwright && npx playwright install --with-deps chromium
+      - name: render audit
+        run: |
+          pages=$(find src -name '*.html' 2>/dev/null | tr '\n' ' ')
+          if [ -n "$pages" ]; then node tools/ui-shot.js $pages --strict; else echo "no pages"; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ui-review
+          path: .ui-review/
+          if-no-files-found: ignore
+          include-hidden-files: true

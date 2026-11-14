@@ -1,0 +1,13 @@
+{
+  "name": "testapppapp",
+  "private": true,
+  "description": "洗練された UI を AI に作らせるための仕組み（基準・スキル・フック・検査器）",
+  "scripts": {
+    "lint:design": "node tools/design-lint.js && node tools/design-lint.js --tokens",
+    "ui:shot": "node tools/ui-shot.js",
+    "test": "node tools/test/run.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.50.0"
+  }
+}

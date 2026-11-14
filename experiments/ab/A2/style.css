@@ -1,0 +1,315 @@
+/* 今日の焙煎計画
+   地の色は生豆の灰緑、データの色は焙煎度（浅→深）の豆の色。 */
+
+:root {
+  --ground: #e6eae3;
+  --surface: #f7f9f5;
+  --ink: #1b221e;
+  --muted: #5c6860;
+  --line: #cdd4cb;
+  --action: #1d5a49;
+  --action-ink: #ffffff;
+  --urgent: #a3341f;
+
+  --roast-light: #cfa56a;
+  --roast-medium-light: #b07d45;
+  --roast-medium: #8a592d;
+  --roast-medium-dark: #633b1e;
+  --roast-dark: #3a2315;
+
+  --radius: 6px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 28px clamp(16px, 4vw, 48px) 64px;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, p, dl, dd, ul { margin: 0; padding: 0; }
+ul { list-style: none; }
+small { font-size: .72em; font-weight: 500; color: var(--muted); margin-left: 2px; }
+
+:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+
+/* ---------- 見出しと追加ボタン ---------- */
+
+.page-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+h1 { font-size: 28px; font-weight: 700; line-height: 1.25; letter-spacing: .02em; }
+.date { color: var(--muted); font-weight: 500; }
+
+h2 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+
+.btn {
+  font: inherit;
+  font-weight: 700;
+  padding: 9px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+.btn:hover { background: rgba(27, 34, 30, .07); }
+.btn-primary { background: var(--action); border-color: var(--action); color: var(--action-ink); }
+.btn-primary:hover { background: #164537; }
+
+/* ---------- 今日の合計とタイムライン ---------- */
+
+.day {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: end;
+  gap: 18px 32px;
+}
+
+.totals { display: flex; gap: 32px; }
+.totals div { display: flex; flex-direction: column-reverse; }
+.totals dt { font-size: 13px; color: var(--muted); font-weight: 500; }
+.totals dd { font-size: 34px; font-weight: 700; line-height: 1.1; }
+.totals small { font-size: 15px; margin-left: 3px; }
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.legend li { display: flex; align-items: center; gap: 6px; }
+
+.bean-dot {
+  flex: none;
+  width: 9px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--c);
+  transform: rotate(24deg);
+}
+[data-roast="light"]        { --c: var(--roast-light);        --on: var(--ink); }
+[data-roast="medium-light"] { --c: var(--roast-medium-light); --on: var(--ink); }
+[data-roast="medium"]       { --c: var(--roast-medium);       --on: #fff; }
+[data-roast="medium-dark"]  { --c: var(--roast-medium-dark);  --on: #fff; }
+[data-roast="dark"]         { --c: var(--roast-dark);         --on: #fff; }
+
+.strip { grid-column: 1 / -1; padding-top: 22px; }
+.strip[hidden] { display: none; }
+
+.strip-track {
+  position: relative;
+  height: 46px;
+  background: var(--surface);
+  border-radius: var(--radius);
+}
+.block {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  background: var(--c);
+  color: var(--on);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  overflow: hidden;
+}
+.block[data-state="done"] { opacity: .5; }
+.block[data-state="roasting"] { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--action); }
+.block:hover, .block:focus-visible { opacity: 1; top: 2px; bottom: 2px; }
+
+.now {
+  position: absolute;
+  top: -22px;
+  bottom: -4px;
+  border-left: 2px solid var(--action);
+  padding-left: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+  color: var(--action);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.strip-hours { position: relative; height: 22px; font-size: 12px; color: var(--muted); }
+.strip-hours span { position: absolute; top: 4px; transform: translateX(-50%); }
+.strip-hours span:first-child { transform: none; }
+.strip-hours span:last-child { transform: translateX(-100%); }
+
+/* ---------- 2カラム ---------- */
+
+.columns {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+  gap: 40px;
+  align-items: start;
+}
+
+table { width: 100%; border-collapse: collapse; }
+th {
+  text-align: left;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 0 12px 6px 0;
+  border-bottom: 1px solid var(--ink);
+  white-space: nowrap;
+}
+td { padding: 11px 12px 11px 0; border-bottom: 1px solid var(--line); vertical-align: middle; }
+
+/* ---------- バッチ一覧 ---------- */
+
+.batch-table tbody tr { scroll-margin-top: 16px; }
+.batch-table td:first-child, .batch-table th:first-child { padding-left: 10px; }
+.c-no { width: 44px; color: var(--muted); }
+.c-time { width: 84px; font-weight: 700; }
+.c-bean { font-weight: 500; }
+.c-roast { white-space: nowrap; }
+td.c-roast .bean-dot { display: inline-block; vertical-align: -2px; margin-right: 7px; }
+.c-kg { width: 76px; text-align: right; white-space: nowrap; }
+td.c-kg { font-weight: 700; }
+.c-state { width: 112px; text-align: right; }
+.batch-table .c-state { padding-right: 0; }
+
+.c-state select {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  width: 100px;
+  padding: 4px 22px 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--muted);
+  color: var(--ink);
+  cursor: pointer;
+  appearance: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0h8L4 5z' fill='%235c6860'/%3E%3C/svg%3E")
+    no-repeat right 9px center transparent;
+}
+
+tr[data-state="roasting"] { background: var(--surface); box-shadow: inset 3px 0 0 var(--action); }
+tr[data-state="roasting"] .c-state select {
+  background-color: var(--action);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0h8L4 5z' fill='%23fff'/%3E%3C/svg%3E");
+  border-color: var(--action);
+  color: var(--action-ink);
+}
+tr[data-state="done"] td { color: var(--muted); }
+tr[data-state="done"] .c-bean { font-weight: 400; }
+tr[data-state="done"] .c-state select { border-color: transparent; color: var(--muted); }
+
+.batch-table tr:target { background: var(--surface); }
+.batch-table tr.is-new { animation: added 1.6s ease-out; }
+@keyframes added { from { background: #cfe3d6; } to { background: transparent; } }
+
+.empty { padding: 20px 0; color: var(--muted); }
+
+/* ---------- 受注一覧 ---------- */
+
+.orders {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 18px 20px 8px;
+}
+.order-table td { vertical-align: top; }
+.order-table tr:last-child td { border-bottom: 0; }
+.o-due { width: 96px; white-space: nowrap; font-weight: 700; }
+.o-left { display: block; font-size: 12.5px; font-weight: 500; color: var(--muted); }
+.is-urgent .o-due, .is-urgent .o-left { color: var(--urgent); }
+.o-item { display: block; font-size: 13px; color: var(--muted); }
+.o-qty { text-align: right; white-space: nowrap; padding-right: 0; }
+td.o-qty { font-weight: 700; }
+
+/* ---------- 追加ダイアログ ---------- */
+
+dialog {
+  width: min(420px, calc(100vw - 32px));
+  padding: 24px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+}
+dialog::backdrop { background: rgba(27, 34, 30, .45); }
+dialog h2 { font-size: 19px; margin-bottom: 16px; }
+dialog label { display: block; font-size: 13px; font-weight: 500; color: var(--muted); margin-bottom: 14px; }
+dialog input, dialog select {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 9px 10px;
+  font: inherit;
+  font-size: 16px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--muted);
+  border-radius: var(--radius);
+}
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.hint { font-size: 13px; color: var(--muted); }
+.dialog-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+
+/* ---------- 狭い画面 ---------- */
+
+@media (max-width: 900px) {
+  .columns { grid-template-columns: minmax(0, 1fr); }
+  .day { grid-template-columns: minmax(0, 1fr); }
+  .legend { justify-content: flex-start; }
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 23px; }
+  .totals { gap: 24px; }
+  .totals dd { font-size: 28px; }
+  .block { font-size: 0; }
+  .strip-hours span:nth-child(even) { display: none; }
+
+  .batch-table thead {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);
+  }
+  .batch-table tbody tr {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr) auto auto;
+    grid-template-areas: "time bean bean kg" "no roast state state";
+    align-items: center;
+    gap: 2px 10px;
+    padding: 10px 0 10px 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  .batch-table td { padding: 0; border: 0; width: auto; }
+  .batch-table td:first-child { padding-left: 0; }
+  .batch-table td.c-no { grid-area: no; font-size: 13px; }
+  .batch-table td.c-no::before { content: "No."; }
+  .batch-table td.c-time { grid-area: time; }
+  .batch-table td.c-bean { grid-area: bean; }
+  .batch-table td.c-roast { grid-area: roast; font-size: 13px; }
+  .batch-table td.c-kg { grid-area: kg; }
+  .batch-table td.c-state { grid-area: state; }
+  .batch-table tbody tr[data-state="roasting"] { padding-right: 8px; }
+
+  .orders { padding: 16px 14px 6px; }
+  .o-due { width: 84px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .batch-table tr.is-new { animation: none; }
+}

@@ -1,0 +1,235 @@
+{
+  "at": "2026-11-13T21:37:31.738Z",
+  "targets": [
+    {
+      "target": "experiments/ab/A/index.html",
+      "runs": [
+        {
+          "viewport": "mobile",
+          "theme": "light",
+          "shot": ".ui-review/shots/A-mobile-light.png",
+          "truncated": false,
+          "findings": [
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 24px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "h1"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 15px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "span"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 13px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "dt"
+            }
+          ],
+          "stats": {
+            "textNodes": 96,
+            "fontSizes": [
+              12,
+              13,
+              14,
+              15,
+              16,
+              24,
+              28
+            ],
+            "fonts": [
+              "Hiragino Sans"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 1741
+          }
+        },
+        {
+          "viewport": "tablet",
+          "theme": "light",
+          "shot": ".ui-review/shots/A-tablet-light.png",
+          "truncated": false,
+          "findings": [
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 15px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "span"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 13px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "dt"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 36px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "span#sum-count"
+            }
+          ],
+          "stats": {
+            "textNodes": 96,
+            "fontSizes": [
+              12,
+              13,
+              14,
+              15,
+              16,
+              28,
+              36
+            ],
+            "fonts": [
+              "Hiragino Sans"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 1437
+          }
+        },
+        {
+          "viewport": "desktop",
+          "theme": "light",
+          "shot": ".ui-review/shots/A-desktop-light.png",
+          "truncated": false,
+          "findings": [
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 15px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "span"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 13px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "dt"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 36px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "span#sum-count"
+            }
+          ],
+          "stats": {
+            "textNodes": 96,
+            "fontSizes": [
+              12,
+              13,
+              14,
+              15,
+              16,
+              28,
+              36
+            ],
+            "fonts": [
+              "Hiragino Sans"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 910,
+            "focusables": 1
+          }
+        },
+        {
+          "viewport": "desktop",
+          "theme": "dark",
+          "shot": ".ui-review/shots/A-desktop-dark.png",
+          "truncated": false,
+          "findings": [
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 15px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "span"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 13px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "dt"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 36px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "span#sum-count"
+            }
+          ],
+          "stats": {
+            "textNodes": 96,
+            "fontSizes": [
+              12,
+              13,
+              14,
+              15,
+              16,
+              28,
+              36
+            ],
+            "fonts": [
+              "Hiragino Sans"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 910
+          }
+        }
+      ]
+    }
+  ],
+  "errors": 4,
+  "warnings": 0,
+  "findings": [
+    {
+      "rule": "off-scale-text",
+      "severity": "error",
+      "message": "トークンに無い文字サイズ 24px（スケール: 12, 14, 16, 20, 28, 40）",
+      "where": "h1",
+      "target": "experiments/ab/A/index.html",
+      "at": [
+        "mobile/light"
+      ]
+    },
+    {
+      "rule": "off-scale-text",
+      "severity": "error",
+      "message": "トークンに無い文字サイズ 15px（スケール: 12, 14, 16, 20, 28, 40）",
+      "where": "span",
+      "target": "experiments/ab/A/index.html",
+      "at": [
+        "mobile/light",
+        "tablet/light",
+        "desktop/light",
+        "desktop/dark"
+      ]
+    },
+    {
+      "rule": "off-scale-text",
+      "severity": "error",
+      "message": "トークンに無い文字サイズ 13px（スケール: 12, 14, 16, 20, 28, 40）",
+      "where": "dt",
+      "target": "experiments/ab/A/index.html",
+      "at": [
+        "mobile/light",
+        "tablet/light",
+        "desktop/light",
+        "desktop/dark"
+      ]
+    },
+    {
+      "rule": "off-scale-text",
+      "severity": "error",
+      "message": "トークンに無い文字サイズ 36px（スケール: 12, 14, 16, 20, 28, 40）",
+      "where": "span#sum-count",
+      "target": "experiments/ab/A/index.html",
+      "at": [
+        "tablet/light",
+        "desktop/light",
+        "desktop/dark"
+      ]
+    }
+  ]
+}

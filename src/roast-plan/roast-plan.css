@@ -1,0 +1,588 @@
+/* 今日の焙煎計画 — 値はすべてトークン。区切りは罫線と余白、囲みは使わない */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--leading-ui);
+  -webkit-text-size-adjust: 100%;
+}
+
+h1,
+h2,
+p,
+dl,
+dd {
+  margin: 0;
+}
+
+.page {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding: var(--space-4) var(--space-4) var(--space-8);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+.unit {
+  margin-inline-start: var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  color: var(--color-text-muted);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+:focus-visible {
+  outline: var(--border-rule) solid var(--color-focus);
+  outline-offset: var(--border-rule);
+}
+
+/* 豆名・顧客名は語の区切り（空白）でだけ折る。収まらない 1 語は例外的に途中で折る */
+.c-bean,
+.c-order .customer,
+#next-body {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* ── 見出し行 ─────────────────────────────── */
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  padding-block-end: var(--space-3);
+  border-block-end: var(--border-rule) solid var(--color-border-strong);
+}
+
+.masthead-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-4);
+}
+
+.brand {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+}
+
+h1 {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-jp);
+  line-height: var(--leading-tight);
+}
+
+h1 time {
+  margin-inline-start: var(--space-2);
+  font-weight: var(--weight-regular);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: normal;
+}
+
+/* ── ボタン ───────────────────────────────── */
+.btn {
+  min-height: var(--tap-min);
+  padding: var(--space-2) var(--space-4);
+  border: var(--border-hairline) solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-accent);
+  font: inherit;
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.btn:hover {
+  background: var(--color-accent-soft);
+  color: var(--color-on-accent-soft);
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: var(--weight-bold);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+  color: var(--color-on-accent);
+}
+
+.btn-step {
+  padding-inline: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.btn-text {
+  border-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: var(--space-1);
+}
+
+/* ── 今日の合計（主役）────────────────────── */
+.summary {
+  display: grid;
+  gap: var(--space-3) var(--space-7);
+  padding-block: var(--space-5);
+}
+
+.remain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-5);
+  line-height: var(--leading-tight);
+}
+
+.remain-label {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+}
+
+.fig {
+  white-space: nowrap;
+}
+
+.fig .num {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+}
+
+.fig .unit {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+}
+
+.next {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-ui);
+}
+
+.next-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  color: var(--color-text-muted);
+}
+
+.totals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-5);
+}
+
+.totals > div {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  white-space: nowrap;
+}
+
+.totals dt {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.totals dd {
+  font-weight: var(--weight-medium);
+}
+
+/* ── 節と表（帳票）────────────────────────── */
+.columns {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.block h2 {
+  padding-block-end: var(--space-2);
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-jp);
+}
+
+.h-note {
+  margin-inline-start: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  letter-spacing: normal;
+  color: var(--color-text-muted);
+}
+
+.ledger {
+  width: 100%;
+  border-collapse: collapse;
+  border-block: var(--border-rule) solid var(--color-border-strong);
+}
+
+.ledger[hidden],
+.next-mark[hidden],
+.empty[hidden] {
+  display: none;
+}
+
+.ledger th,
+.ledger td {
+  padding: var(--space-2) var(--space-3);
+  text-align: start;
+  vertical-align: middle;
+  font-weight: var(--weight-regular);
+}
+
+.ledger th:first-child,
+.ledger td:first-child {
+  padding-inline-start: var(--space-2);
+}
+
+.ledger th:last-child,
+.ledger td:last-child {
+  padding-inline-end: var(--space-2);
+}
+
+.ledger thead th {
+  background: var(--color-surface-sunken);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.ledger tbody tr {
+  border-block-start: var(--border-hairline) solid var(--color-border);
+}
+
+.ledger .num {
+  text-align: end;
+  white-space: nowrap;
+}
+
+/* バッチ一覧: 時刻が左に縦に揃う */
+.batches tbody tr {
+  height: calc(var(--tap-min) + var(--space-4));
+}
+
+.batches .c-time {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--weight-medium);
+}
+
+.batches .c-bean {
+  width: 100%;
+  font-weight: var(--weight-medium);
+}
+
+.batches .c-roast,
+.batches .c-status {
+  white-space: nowrap;
+}
+
+.batches .c-act {
+  text-align: end;
+}
+
+.batches th,
+.batches td {
+  padding-inline: var(--space-2);
+}
+
+.next-mark {
+  display: block;
+  width: fit-content;
+  margin-block-start: var(--space-1);
+  padding: 0 var(--space-1);
+  border: var(--border-hairline) solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+}
+
+.roast {
+  display: inline-block;
+  width: var(--space-3);
+  height: var(--space-3);
+  margin-inline-end: var(--space-2);
+  border: var(--border-hairline) solid var(--color-text-muted);
+  border-radius: var(--radius-full);
+}
+
+.roast[data-roast="1"] { background: var(--color-roast-1); }
+.roast[data-roast="2"] { background: var(--color-roast-2); }
+.roast[data-roast="3"] { background: var(--color-roast-3); }
+.roast[data-roast="4"] { background: var(--color-roast-4); }
+.roast[data-roast="5"] { background: var(--color-roast-5); }
+
+.status {
+  display: inline-block;
+  padding: 0 var(--space-2);
+  border: var(--border-hairline) solid var(--color-text-muted);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+}
+
+tr[data-status="roasting"] .status {
+  border-color: transparent;
+  background: var(--color-accent-soft);
+  color: var(--color-on-accent-soft);
+  font-weight: var(--weight-bold);
+}
+
+tr[data-status="roasting"] .c-time,
+tr[data-status="roasting"] .c-bean,
+tr.is-next .c-time,
+tr.is-next .c-bean {
+  font-weight: var(--weight-bold);
+}
+
+tr[data-status="done"] {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-muted);
+}
+
+tr[data-status="done"] .c-time,
+tr[data-status="done"] .c-bean {
+  font-weight: var(--weight-regular);
+}
+
+tr[data-status="done"] .status {
+  border-color: transparent;
+  background: var(--color-done-soft);
+  color: var(--color-on-done-soft);
+}
+
+/* 受注一覧 */
+.orders .c-due {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  vertical-align: top;
+}
+
+.orders .c-qty {
+  vertical-align: top;
+}
+
+.orders .c-order {
+  width: 100%;
+}
+
+.orders .customer,
+.orders .product {
+  display: block;
+}
+
+.orders .customer {
+  font-weight: var(--weight-medium);
+}
+
+.orders .product {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.orders .is-urgent .c-due time {
+  color: var(--color-text-danger);
+  font-weight: var(--weight-bold);
+}
+
+.due-flag {
+  display: block;
+  width: fit-content;
+  margin-block-start: var(--space-1);
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+}
+
+.due-today {
+  background: var(--color-danger);
+  color: var(--color-on-danger);
+}
+
+.due-soon {
+  background: var(--color-danger-soft);
+  color: var(--color-on-danger-soft);
+}
+
+.empty {
+  padding: var(--space-7) var(--space-4);
+  border-block: var(--border-rule) solid var(--color-border-strong);
+  text-align: center;
+}
+
+/* ── バッチ追加ダイアログ ─────────────────── */
+dialog {
+  width: min(100% - var(--space-6), 34rem);
+  padding: var(--space-5);
+  border: var(--border-hairline) solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-overlay);
+}
+
+dialog h2 {
+  padding-block-end: var(--space-4);
+  font-size: var(--text-lg);
+  letter-spacing: var(--tracking-jp);
+}
+
+.field {
+  display: grid;
+  gap: var(--space-1);
+  margin-block-end: var(--space-4);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 0 var(--space-4);
+}
+
+.field label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-height: var(--tap-min);
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-hairline) solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding-block-start: var(--space-2);
+}
+
+/* ── モバイル: バッチ行を 2 段組みに（表のまま、列見出しは読み上げ用に残す）── */
+@media (max-width: 39.99rem) {
+  .batches,
+  .batches tbody {
+    display: block;
+  }
+
+  .batches thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .batches tbody tr {
+    display: grid;
+    grid-template-columns: auto auto auto 1fr auto;
+    grid-template-areas:
+      "time bean bean bean kg"
+      "time roast status act act";
+    align-items: center;
+    gap: var(--space-1) var(--space-3);
+    height: auto;
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .batches tbody tr:first-child {
+    border-block-start: 0;
+  }
+
+  .batches tbody th,
+  .batches tbody td {
+    padding: 0;
+  }
+
+  .batches .c-time {
+    grid-area: time;
+    align-self: start;
+  }
+
+  .batches .c-bean {
+    grid-area: bean;
+    width: auto;
+  }
+
+  .batches .c-kg {
+    grid-area: kg;
+    align-self: start;
+  }
+
+  .batches .c-roast {
+    grid-area: roast;
+    font-size: var(--text-sm);
+  }
+
+  .batches .c-status {
+    grid-area: status;
+  }
+
+  .batches .c-act {
+    grid-area: act;
+  }
+
+  .masthead .btn-primary {
+    flex: 1 0 100%;
+  }
+}
+
+/* ── タブレット横〜: 合計を 2 列に、一覧を左右に ── */
+@media (min-width: 40rem) {
+  .page {
+    padding: var(--space-5) var(--space-5) var(--space-8);
+  }
+
+  .summary {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: end;
+  }
+
+  .totals {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 64rem) {
+  .columns {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 3fr);
+    gap: var(--space-6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

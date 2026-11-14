@@ -1,0 +1,604 @@
+{
+  "at": "2026-11-13T21:37:34.292Z",
+  "targets": [
+    {
+      "target": "experiments/ab/A2/index.html",
+      "runs": [
+        {
+          "viewport": "mobile",
+          "theme": "light",
+          "shot": ".ui-review/shots/A2-mobile-light.png",
+          "truncated": false,
+          "findings": [
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 23px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "h1"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 15px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "time"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 13px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "dt"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 17px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "h2#batches-h"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 12.5px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "th.c-no"
+            },
+            {
+              "rule": "tiny-text",
+              "severity": "error",
+              "message": "文字が小さすぎる（10.8px < 12px）— 「kg」",
+              "where": "small"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 10.8px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "small"
+            },
+            {
+              "rule": "too-many-sizes",
+              "severity": "warn",
+              "message": "文字サイズが 8 種類ある（10.8, 12, 12.5, 13, 15, 17, 23, 28px）。階層が曖昧になっていないか",
+              "where": ""
+            },
+            {
+              "rule": "tap-target",
+              "severity": "error",
+              "message": "タップ領域が小さい（19×36px < 24px）",
+              "where": "a.block"
+            },
+            {
+              "rule": "tap-target",
+              "severity": "error",
+              "message": "タップ領域が小さい（19×36px < 24px）",
+              "where": "a.block"
+            },
+            {
+              "rule": "tap-target",
+              "severity": "error",
+              "message": "タップ領域が小さい（19×36px < 24px）",
+              "where": "a.block"
+            },
+            {
+              "rule": "tap-target",
+              "severity": "error",
+              "message": "タップ領域が小さい（19×36px < 24px）",
+              "where": "a.block"
+            },
+            {
+              "rule": "tap-target",
+              "severity": "error",
+              "message": "タップ領域が小さい（19×36px < 24px）",
+              "where": "a.block"
+            },
+            {
+              "rule": "tap-target",
+              "severity": "error",
+              "message": "タップ領域が小さい（19×36px < 24px）",
+              "where": "a.block"
+            },
+            {
+              "rule": "tap-target",
+              "severity": "error",
+              "message": "タップ領域が小さい（19×36px < 24px）",
+              "where": "a.block"
+            },
+            {
+              "rule": "tap-target",
+              "severity": "error",
+              "message": "タップ領域が小さい（19×36px < 24px）",
+              "where": "a.block"
+            }
+          ],
+          "stats": {
+            "textNodes": 125,
+            "fontSizes": [
+              10.8,
+              12,
+              12.5,
+              13,
+              15,
+              17,
+              23,
+              28
+            ],
+            "fonts": [
+              "Zen Kaku Gothic New"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 1661
+          }
+        },
+        {
+          "viewport": "tablet",
+          "theme": "light",
+          "shot": ".ui-review/shots/A2-tablet-light.png",
+          "truncated": false,
+          "findings": [
+            {
+              "rule": "contrast",
+              "severity": "error",
+              "message": "コントラスト 2.54:1（必要 4.5:1）— 「1」 13px",
+              "where": "a.block"
+            },
+            {
+              "rule": "contrast",
+              "severity": "error",
+              "message": "コントラスト 2.14:1（必要 4.5:1）— 「2」 13px",
+              "where": "a.block"
+            },
+            {
+              "rule": "contrast",
+              "severity": "error",
+              "message": "コントラスト 2.73:1（必要 4.5:1）— 「3」 13px",
+              "where": "a.block"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 15px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "time"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 13px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "dt"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 34px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "span#total-count"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 17px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "h2#batches-h"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 12.5px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "th.c-no"
+            },
+            {
+              "rule": "tiny-text",
+              "severity": "error",
+              "message": "文字が小さすぎる（10.8px < 12px）— 「kg」",
+              "where": "small"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 10.8px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "small"
+            },
+            {
+              "rule": "too-many-sizes",
+              "severity": "warn",
+              "message": "文字サイズが 8 種類ある（10.8, 12, 12.5, 13, 15, 17, 28, 34px）。階層が曖昧になっていないか",
+              "where": ""
+            },
+            {
+              "rule": "tap-target-44",
+              "severity": "warn",
+              "message": "44px 未満の操作要素が 8 個（指で押す主要操作は 44px 以上に）",
+              "where": ""
+            }
+          ],
+          "stats": {
+            "textNodes": 129,
+            "fontSizes": [
+              10.8,
+              12,
+              12.5,
+              13,
+              15,
+              17,
+              28,
+              34
+            ],
+            "fonts": [
+              "Zen Kaku Gothic New"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 1447
+          }
+        },
+        {
+          "viewport": "desktop",
+          "theme": "light",
+          "shot": ".ui-review/shots/A2-desktop-light.png",
+          "truncated": false,
+          "findings": [
+            {
+              "rule": "contrast",
+              "severity": "error",
+              "message": "コントラスト 2.54:1（必要 4.5:1）— 「1」 13px",
+              "where": "a.block"
+            },
+            {
+              "rule": "contrast",
+              "severity": "error",
+              "message": "コントラスト 2.14:1（必要 4.5:1）— 「2」 13px",
+              "where": "a.block"
+            },
+            {
+              "rule": "contrast",
+              "severity": "error",
+              "message": "コントラスト 2.73:1（必要 4.5:1）— 「3」 13px",
+              "where": "a.block"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 15px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "time"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 13px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "dt"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 34px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "span#total-count"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 17px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "h2#batches-h"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 12.5px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "th.c-no"
+            },
+            {
+              "rule": "tiny-text",
+              "severity": "error",
+              "message": "文字が小さすぎる（10.8px < 12px）— 「kg」",
+              "where": "small"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 10.8px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "small"
+            },
+            {
+              "rule": "too-many-sizes",
+              "severity": "warn",
+              "message": "文字サイズが 8 種類ある（10.8, 12, 12.5, 13, 15, 17, 28, 34px）。階層が曖昧になっていないか",
+              "where": ""
+            }
+          ],
+          "stats": {
+            "textNodes": 129,
+            "fontSizes": [
+              10.8,
+              12,
+              12.5,
+              13,
+              15,
+              17,
+              28,
+              34
+            ],
+            "fonts": [
+              "Zen Kaku Gothic New"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 915,
+            "focusables": 17
+          }
+        },
+        {
+          "viewport": "desktop",
+          "theme": "dark",
+          "shot": ".ui-review/shots/A2-desktop-dark.png",
+          "truncated": false,
+          "findings": [
+            {
+              "rule": "contrast",
+              "severity": "error",
+              "message": "コントラスト 2.54:1（必要 4.5:1）— 「1」 13px",
+              "where": "a.block"
+            },
+            {
+              "rule": "contrast",
+              "severity": "error",
+              "message": "コントラスト 2.14:1（必要 4.5:1）— 「2」 13px",
+              "where": "a.block"
+            },
+            {
+              "rule": "contrast",
+              "severity": "error",
+              "message": "コントラスト 2.73:1（必要 4.5:1）— 「3」 13px",
+              "where": "a.block"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 15px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "time"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 13px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "dt"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 34px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "span#total-count"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 17px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "h2#batches-h"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 12.5px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "th.c-no"
+            },
+            {
+              "rule": "tiny-text",
+              "severity": "error",
+              "message": "文字が小さすぎる（10.8px < 12px）— 「kg」",
+              "where": "small"
+            },
+            {
+              "rule": "off-scale-text",
+              "severity": "error",
+              "message": "トークンに無い文字サイズ 10.8px（スケール: 12, 14, 16, 20, 28, 40）",
+              "where": "small"
+            },
+            {
+              "rule": "too-many-sizes",
+              "severity": "warn",
+              "message": "文字サイズが 8 種類ある（10.8, 12, 12.5, 13, 15, 17, 28, 34px）。階層が曖昧になっていないか",
+              "where": ""
+            }
+          ],
+          "stats": {
+            "textNodes": 129,
+            "fontSizes": [
+              10.8,
+              12,
+              12.5,
+              13,
+              15,
+              17,
+              28,
+              34
+            ],
+            "fonts": [
+              "Zen Kaku Gothic New"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 915
+          }
+        }
+      ]
+    }
+  ],
+  "errors": 12,
+  "warnings": 3,
+  "findings": [
+    {
+      "rule": "off-scale-text",
+      "severity": "error",
+      "message": "トークンに無い文字サイズ 23px（スケール: 12, 14, 16, 20, 28, 40）",
+      "where": "h1",
+      "target": "experiments/ab/A2/index.html",
+      "at": [
+        "mobile/light"
+      ]
+    },
+    {
+      "rule": "off-scale-text",
+      "severity": "error",
+      "message": "トークンに無い文字サイズ 15px（スケール: 12, 14, 16, 20, 28, 40）",
+      "where": "time",
+      "target": "experiments/ab/A2/index.html",
+      "at": [
+        "mobile/light",
+        "tablet/light",
+        "desktop/light",
+        "desktop/dark"
+      ]
+    },
+    {
+      "rule": "off-scale-text",
+      "severity": "error",
+      "message": "トークンに無い文字サイズ 13px（スケール: 12, 14, 16, 20, 28, 40）",
+      "where": "dt",
+      "target": "experiments/ab/A2/index.html",
+      "at": [
+        "mobile/light",
+        "tablet/light",
+        "desktop/light",
+        "desktop/dark"
+      ]
+    },
+    {
+      "rule": "off-scale-text",
+      "severity": "error",
+      "message": "トークンに無い文字サイズ 17px（スケール: 12, 14, 16, 20, 28, 40）",
+      "where": "h2#batches-h",
+      "target": "experiments/ab/A2/index.html",
+      "at": [
+        "mobile/light",
+        "tablet/light",
+        "desktop/light",
+        "desktop/dark"
+      ]
+    },
+    {
+      "rule": "off-scale-text",
+      "severity": "error",
+      "message": "トークンに無い文字サイズ 12.5px（スケール: 12, 14, 16, 20, 28, 40）",
+      "where": "th.c-no",
+      "target": "experiments/ab/A2/index.html",
+      "at": [
+        "mobile/light",
+        "tablet/light",
+        "desktop/light",
+        "desktop/dark"
+      ]
+    },
+    {
+      "rule": "tiny-text",
+      "severity": "error",
+      "message": "文字が小さすぎる（10.8px < 12px）— 「kg」",
+      "where": "small",
+      "target": "experiments/ab/A2/index.html",
+      "at": [
+        "mobile/light",
+        "tablet/light",
+        "desktop/light",
+        "desktop/dark"
+      ]
+    },
+    {
+      "rule": "off-scale-text",
+      "severity": "error",
+      "message": "トークンに無い文字サイズ 10.8px（スケール: 12, 14, 16, 20, 28, 40）",
+      "where": "small",
+      "target": "experiments/ab/A2/index.html",
+      "at": [
+        "mobile/light",
+        "tablet/light",
+        "desktop/light",
+        "desktop/dark"
+      ]
+    },
+    {
+      "rule": "too-many-sizes",
+      "severity": "warn",
+      "message": "文字サイズが 8 種類ある（10.8, 12, 12.5, 13, 15, 17, 23, 28px）。階層が曖昧になっていないか",
+      "where": "",
+      "target": "experiments/ab/A2/index.html",
+      "at": [
+        "mobile/light"
+      ]
+    },
+    {
+      "rule": "tap-target",
+      "severity": "error",
+      "message": "タップ領域が小さい（19×36px < 24px）",
+      "where": "a.block",
+      "target": "experiments/ab/A2/index.html",
+      "at": [
+        "mobile/light",
+        "mobile/light",
+        "mobile/light",
+        "mobile/light",
+        "mobile/light",
+        "mobile/light",
+        "mobile/light",
+        "mobile/light"
+      ]
+    },
+    {
+      "rule": "contrast",
+      "severity": "error",
+      "message": "コントラスト 2.54:1（必要 4.5:1）— 「1」 13px",
+      "where": "a.block",
+      "target": "experiments/ab/A2/index.html",
+      "at": [
+        "tablet/light",
+        "desktop/light",
+        "desktop/dark"
+      ]
+    },
+    {
+      "rule": "contrast",
+      "severity": "error",
+      "message": "コントラスト 2.14:1（必要 4.5:1）— 「2」 13px",
+      "where": "a.block",
+      "target": "experiments/ab/A2/index.html",
+      "at": [
+        "tablet/light",
+        "desktop/light",
+        "desktop/dark"
+      ]
+    },
+    {
+      "rule": "contrast",
+      "severity": "error",
+      "message": "コントラスト 2.73:1（必要 4.5:1）— 「3」 13px",
+      "where": "a.block",
+      "target": "experiments/ab/A2/index.html",
+      "at": [
+        "tablet/light",
+        "desktop/light",
+        "desktop/dark"
+      ]
+    },
+    {
+      "rule": "off-scale-text",
+      "severity": "error",
+      "message": "トークンに無い文字サイズ 34px（スケール: 12, 14, 16, 20, 28, 40）",
+      "where": "span#total-count",
+      "target": "experiments/ab/A2/index.html",
+      "at": [
+        "tablet/light",
+        "desktop/light",
+        "desktop/dark"
+      ]
+    },
+    {
+      "rule": "too-many-sizes",
+      "severity": "warn",
+      "message": "文字サイズが 8 種類ある（10.8, 12, 12.5, 13, 15, 17, 28, 34px）。階層が曖昧になっていないか",
+      "where": "",
+      "target": "experiments/ab/A2/index.html",
+      "at": [
+        "tablet/light",
+        "desktop/light",
+        "desktop/dark"
+      ]
+    },
+    {
+      "rule": "tap-target-44",
+      "severity": "warn",
+      "message": "44px 未満の操作要素が 8 個（指で押す主要操作は 44px 以上に）",
+      "where": "",
+      "target": "experiments/ab/A2/index.html",
+      "at": [
+        "tablet/light"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+ui-shot: 描画監査  0 errors, 0 warnings
+
+experiments/ab/B0/index.html: 文字サイズ 14/16/20/40px, 書体 IBM Plex Sans JP
+
+experiments/ab/B0/index.html?empty=1: 文字サイズ 14/16/20/40px, 書体 IBM Plex Sans JP
+
+スクリーンショット（Read ツールで実際に開いて確認すること。開かないと完了できません）:
+  /home/user/testapppapp/.ui-review/shots/experiments-ab-B0-index-mobile-light.png
+  /home/user/testapppapp/.ui-review/shots/experiments-ab-B0-index-tablet-light.png
+  /home/user/testapppapp/.ui-review/shots/experiments-ab-B0-index-desktop-light.png
+  /home/user/testapppapp/.ui-review/shots/experiments-ab-B0-index-desktop-dark.png
+  /home/user/testapppapp/.ui-review/shots/experiments-ab-B0-index-empty-1-mobile-light.png
+  /home/user/testapppapp/.ui-review/shots/experiments-ab-B0-index-empty-1-tablet-light.png
+  /home/user/testapppapp/.ui-review/shots/experiments-ab-B0-index-empty-1-desktop-light.png
+  /home/user/testapppapp/.ui-review/shots/experiments-ab-B0-index-empty-1-desktop-dark.png
+
+次: 各画像を Read で開き、.claude/skills/ui-design/references/critique.md の観点で批評 → 直す → 再実行。

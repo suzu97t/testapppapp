@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>今日の焙煎計画</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="page-head">
+      <div>
+        <p class="eyebrow">焙煎計画</p>
+        <h1>今日の焙煎計画</h1>
+        <p class="date"><time datetime="2026-11-13">2026年11月13日（金）</time></p>
+      </div>
+      <button type="button" class="btn btn--primary" id="open-add">
+        <span aria-hidden="true">＋</span> バッチを追加
+      </button>
+    </header>
+
+    <dl class="summary" aria-label="今日の合計" aria-live="polite">
+      <div class="summary__item">
+        <dt>バッチ数</dt>
+        <dd><span id="sum-count">8</span><small>本</small></dd>
+      </div>
+      <div class="summary__item">
+        <dt>合計重量</dt>
+        <dd><span id="sum-weight">35.5</span><small>kg</small></dd>
+      </div>
+      <div class="summary__item summary__item--todo">
+        <dt>未着手</dt>
+        <dd><span id="sum-todo">4</span><small>本</small></dd>
+      </div>
+    </dl>
+
+    <div class="columns">
+      <section class="panel" aria-labelledby="batches-title">
+        <h2 id="batches-title">今日のバッチ</h2>
+        <table class="batches">
+          <thead>
+            <tr>
+              <th scope="col">開始予定</th>
+              <th scope="col">豆</th>
+              <th scope="col">焙煎度</th>
+              <th scope="col" class="num">重量 (kg)</th>
+              <th scope="col">状態</th>
+            </tr>
+          </thead>
+          <tbody id="batch-rows">
+            <tr data-status="done" data-weight="4">
+              <td class="c-time">08:30</td>
+              <td class="c-name">エチオピア イルガチェフェ G1</td>
+              <td class="c-roast"><span class="roast roast--1">浅煎り</span></td>
+              <td class="c-weight num">4.0</td>
+              <td class="c-status"><span class="status status--done">完了</span></td>
+            </tr>
+            <tr data-status="done" data-weight="3">
+              <td class="c-time">09:15</td>
+              <td class="c-name">ケニア ニエリ AA</td>
+              <td class="c-roast"><span class="roast roast--2">中浅煎り</span></td>
+              <td class="c-weight num">3.0</td>
+              <td class="c-status"><span class="status status--done">完了</span></td>
+            </tr>
+            <tr data-status="cooling" data-weight="5">
+              <td class="c-time">10:00</td>
+              <td class="c-name">コロンビア ウィラ スプレモ</td>
+              <td class="c-roast"><span class="roast roast--3">中煎り</span></td>
+              <td class="c-weight num">5.0</td>
+              <td class="c-status"><span class="status status--cooling">冷却中</span></td>
+            </tr>
+            <tr data-status="roasting" data-weight="5">
+              <td class="c-time">10:45</td>
+              <td class="c-name">グアテマラ アンティグア SHB</td>
+              <td class="c-roast"><span class="roast roast--4">中深煎り</span></td>
+              <td class="c-weight num">5.0</td>
+              <td class="c-status"><span class="status status--roasting">焙煎中</span></td>
+            </tr>
+            <tr data-status="todo" data-weight="6">
+              <td class="c-time">13:00</td>
+              <td class="c-name">ブラジル セラード ナチュラル</td>
+              <td class="c-roast"><span class="roast roast--4">中深煎り</span></td>
+              <td class="c-weight num">6.0</td>
+              <td class="c-status"><span class="status status--todo">未着手</span></td>
+            </tr>
+            <tr data-status="todo" data-weight="6">
+              <td class="c-time">13:45</td>
+              <td class="c-name">ハウスブレンド</td>
+              <td class="c-roast"><span class="roast roast--5">深煎り</span></td>
+              <td class="c-weight num">6.0</td>
+              <td class="c-status"><span class="status status--todo">未着手</span></td>
+            </tr>
+            <tr data-status="todo" data-weight="4">
+              <td class="c-time">14:30</td>
+              <td class="c-name">マンデリン G1</td>
+              <td class="c-roast"><span class="roast roast--5">深煎り</span></td>
+              <td class="c-weight num">4.0</td>
+              <td class="c-status"><span class="status status--todo">未着手</span></td>
+            </tr>
+            <tr data-status="todo" data-weight="2.5">
+              <td class="c-time">15:15</td>
+              <td class="c-name">デカフェ コロンビア</td>
+              <td class="c-roast"><span class="roast roast--3">中煎り</span></td>
+              <td class="c-weight num">2.5</td>
+              <td class="c-status"><span class="status status--todo">未着手</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="panel" aria-labelledby="orders-title">
+        <h2 id="orders-title">納期が近い受注</h2>
+        <ul class="orders">
+          <li class="order order--today">
+            <div class="order__main">
+              <p class="order__customer">コワーキング ツムギ</p>
+              <p class="order__item">ケニア ニエリ AA<span class="order__qty">500g × 4袋</span></p>
+            </div>
+            <p class="order__due"><strong>今日</strong><time datetime="2026-11-13">11/13（金）</time></p>
+          </li>
+          <li class="order order--soon">
+            <div class="order__main">
+              <p class="order__customer">喫茶 こもれび</p>
+              <p class="order__item">ハウスブレンド<span class="order__qty">200g × 30袋</span></p>
+            </div>
+            <p class="order__due"><strong>明日</strong><time datetime="2026-11-14">11/14（土）</time></p>
+          </li>
+          <li class="order order--soon">
+            <div class="order__main">
+              <p class="order__customer">ベーカリー 麦の音</p>
+              <p class="order__item">コロンビア ウィラ スプレモ<span class="order__qty">1kg × 4袋</span></p>
+            </div>
+            <p class="order__due"><strong>明日</strong><time datetime="2026-11-14">11/14（土）</time></p>
+          </li>
+          <li class="order">
+            <div class="order__main">
+              <p class="order__customer">山田珈琲店</p>
+              <p class="order__item">マンデリン G1<span class="order__qty">500g × 10袋</span></p>
+            </div>
+            <p class="order__due"><strong>あと3日</strong><time datetime="2026-11-16">11/16（月）</time></p>
+          </li>
+          <li class="order">
+            <div class="order__main">
+              <p class="order__customer">佐藤 美咲 様（オンライン #1042）</p>
+              <p class="order__item">エチオピア イルガチェフェ G1<span class="order__qty">200g × 2袋</span></p>
+            </div>
+            <p class="order__due"><strong>あと3日</strong><time datetime="2026-11-16">11/16（月）</time></p>
+          </li>
+          <li class="order">
+            <div class="order__main">
+              <p class="order__customer">ホテル青柳</p>
+              <p class="order__item">デカフェ コロンビア<span class="order__qty">1kg × 2袋</span></p>
+            </div>
+            <p class="order__due"><strong>あと4日</strong><time datetime="2026-11-17">11/17（火）</time></p>
+          </li>
+          <li class="order">
+            <div class="order__main">
+              <p class="order__customer">Cafe Tokiwa</p>
+              <p class="order__item">ブラジル セラード ナチュラル<span class="order__qty">1kg × 8袋</span></p>
+            </div>
+            <p class="order__due"><strong>あと5日</strong><time datetime="2026-11-18">11/18（水）</time></p>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <dialog id="add-dialog" aria-labelledby="add-title">
+    <form id="add-form" class="form">
+      <h2 id="add-title">バッチを追加</h2>
+      <label class="field">
+        <span>豆の名前</span>
+        <input name="name" type="text" required autocomplete="off" placeholder="例：コスタリカ タラス">
+      </label>
+      <label class="field">
+        <span>焙煎度</span>
+        <select name="roast" required>
+          <option value="1">浅煎り</option>
+          <option value="2">中浅煎り</option>
+          <option value="3" selected>中煎り</option>
+          <option value="4">中深煎り</option>
+          <option value="5">深煎り</option>
+        </select>
+      </label>
+      <div class="field-row">
+        <label class="field">
+          <span>重量 (kg)</span>
+          <input name="weight" type="number" required min="0.5" max="30" step="0.5" value="5" inputmode="decimal">
+        </label>
+        <label class="field">
+          <span>開始予定</span>
+          <input name="time" type="time" required value="16:00">
+        </label>
+      </div>
+      <div class="form__actions">
+        <button type="button" class="btn" id="cancel-add">キャンセル</button>
+        <button type="submit" class="btn btn--primary">追加する</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

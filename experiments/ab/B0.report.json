@@ -1,0 +1,188 @@
+{
+  "at": "2026-11-13T21:44:27.702Z",
+  "targets": [
+    {
+      "target": "experiments/ab/B0/index.html",
+      "runs": [
+        {
+          "viewport": "mobile",
+          "theme": "light",
+          "shot": ".ui-review/shots/experiments-ab-B0-index-mobile-light.png",
+          "truncated": false,
+          "findings": [],
+          "stats": {
+            "textNodes": 115,
+            "fontSizes": [
+              14,
+              16,
+              20,
+              40
+            ],
+            "fonts": [
+              "IBM Plex Sans JP"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 2421
+          }
+        },
+        {
+          "viewport": "tablet",
+          "theme": "light",
+          "shot": ".ui-review/shots/experiments-ab-B0-index-tablet-light.png",
+          "truncated": false,
+          "findings": [],
+          "stats": {
+            "textNodes": 115,
+            "fontSizes": [
+              14,
+              16,
+              20,
+              40
+            ],
+            "fonts": [
+              "IBM Plex Sans JP"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 1598
+          }
+        },
+        {
+          "viewport": "desktop",
+          "theme": "light",
+          "shot": ".ui-review/shots/experiments-ab-B0-index-desktop-light.png",
+          "truncated": false,
+          "findings": [],
+          "stats": {
+            "textNodes": 115,
+            "fontSizes": [
+              14,
+              16,
+              20,
+              40
+            ],
+            "fonts": [
+              "IBM Plex Sans JP"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 1152,
+            "focusables": 7
+          }
+        },
+        {
+          "viewport": "desktop",
+          "theme": "dark",
+          "shot": ".ui-review/shots/experiments-ab-B0-index-desktop-dark.png",
+          "truncated": false,
+          "findings": [],
+          "stats": {
+            "textNodes": 115,
+            "fontSizes": [
+              14,
+              16,
+              20,
+              40
+            ],
+            "fonts": [
+              "IBM Plex Sans JP"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 1152
+          }
+        }
+      ]
+    },
+    {
+      "target": "experiments/ab/B0/index.html?empty=1",
+      "runs": [
+        {
+          "viewport": "mobile",
+          "theme": "light",
+          "shot": ".ui-review/shots/experiments-ab-B0-index-empty-1-mobile-light.png",
+          "truncated": false,
+          "findings": [],
+          "stats": {
+            "textNodes": 61,
+            "fontSizes": [
+              14,
+              16,
+              20,
+              40
+            ],
+            "fonts": [
+              "IBM Plex Sans JP"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 1540
+          }
+        },
+        {
+          "viewport": "tablet",
+          "theme": "light",
+          "shot": ".ui-review/shots/experiments-ab-B0-index-empty-1-tablet-light.png",
+          "truncated": false,
+          "findings": [],
+          "stats": {
+            "textNodes": 57,
+            "fontSizes": [
+              14,
+              16,
+              20,
+              40
+            ],
+            "fonts": [
+              "IBM Plex Sans JP"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 1180
+          }
+        },
+        {
+          "viewport": "desktop",
+          "theme": "light",
+          "shot": ".ui-review/shots/experiments-ab-B0-index-empty-1-desktop-light.png",
+          "truncated": false,
+          "findings": [],
+          "stats": {
+            "textNodes": 57,
+            "fontSizes": [
+              14,
+              16,
+              20,
+              40
+            ],
+            "fonts": [
+              "IBM Plex Sans JP"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 1003,
+            "focusables": 3
+          }
+        },
+        {
+          "viewport": "desktop",
+          "theme": "dark",
+          "shot": ".ui-review/shots/experiments-ab-B0-index-empty-1-desktop-dark.png",
+          "truncated": false,
+          "findings": [],
+          "stats": {
+            "textNodes": 57,
+            "fontSizes": [
+              14,
+              16,
+              20,
+              40
+            ],
+            "fonts": [
+              "IBM Plex Sans JP"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 1003
+          }
+        }
+      ]
+    }
+  ],
+  "errors": 0,
+  "warnings": 0,
+  "findings": []
+}

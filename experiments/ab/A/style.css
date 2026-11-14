@@ -1,0 +1,557 @@
+:root {
+  --bg: #f5f0e8;
+  --surface: #fffdf9;
+  --ink: #2a211b;
+  --muted: #74665a;
+  --line: #e4dacc;
+  --accent: #a9471f;
+  --accent-ink: #fffdf9;
+  --accent-soft: #f6e3d6;
+  --cool: #2c6682;
+  --cool-soft: #e2eef3;
+  --done: #5d6b52;
+  --row-active: #fbf3ea;
+
+  --roast-1: #c9a074;
+  --roast-2: #ab7a45;
+  --roast-3: #8a5a2b;
+  --roast-4: #5e3a1c;
+  --roast-5: #33200f;
+
+  --radius: 10px;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #191411;
+    --surface: #231c18;
+    --ink: #f1e8dd;
+    --muted: #ab9d8f;
+    --line: #3b312a;
+    --accent: #e58a5c;
+    --accent-ink: #1d1410;
+    --accent-soft: #43281b;
+    --cool: #8cc3dc;
+    --cool-soft: #1f343e;
+    --done: #a3b396;
+    --row-active: #2b221c;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP",
+    "Yu Gothic UI", "Yu Gothic", Meiryo, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+p,
+dl,
+dd,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+/* ---------- Header ---------- */
+
+.page-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+
+.date {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  font: inherit;
+  font-weight: 600;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  border-color: var(--muted);
+}
+
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.btn--primary:hover {
+  border-color: var(--accent);
+  filter: brightness(1.08);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Summary ---------- */
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 28px;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+
+.summary__item {
+  padding: 14px 20px 16px;
+  border-left: 1px solid var(--line);
+}
+
+.summary__item:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.summary dt {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.summary dd {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.summary small {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-left: 4px;
+}
+
+.summary__item--todo dd span {
+  color: var(--accent);
+}
+
+/* ---------- Layout ---------- */
+
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  margin-top: 28px;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 20px 8px;
+}
+
+.panel h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* ---------- Batches table ---------- */
+
+.batches {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.batches th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.batches td {
+  padding: 13px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.batches tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.batches th:first-child,
+.batches td:first-child {
+  padding-left: 0;
+}
+
+.batches th:last-child,
+.batches td:last-child {
+  padding-right: 0;
+}
+
+.batches .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.c-time {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.c-name {
+  font-weight: 600;
+}
+
+.c-roast,
+.c-status {
+  white-space: nowrap;
+}
+
+tr[data-status="done"] .c-time,
+tr[data-status="done"] .c-name,
+tr[data-status="done"] .c-weight {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+tr[data-status="roasting"] td {
+  background: var(--row-active);
+}
+
+tr[data-status="roasting"] td:first-child {
+  box-shadow: inset 3px 0 0 var(--accent);
+  padding-left: 10px;
+}
+
+/* Roast level: swatch in the colour of the roast */
+
+.roast {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.roast::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--swatch);
+  box-shadow: 0 0 0 1px var(--line);
+  flex: none;
+}
+
+.roast--1 { --swatch: var(--roast-1); }
+.roast--2 { --swatch: var(--roast-2); }
+.roast--3 { --swatch: var(--roast-3); }
+.roast--4 { --swatch: var(--roast-4); }
+.roast--5 { --swatch: var(--roast-5); }
+
+/* Status */
+
+.status {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.status--todo {
+  border-color: var(--muted);
+  color: var(--ink);
+}
+
+.status--roasting {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.status--cooling {
+  background: var(--cool-soft);
+  color: var(--cool);
+}
+
+.status--done {
+  color: var(--done);
+  padding-left: 0;
+}
+
+.status--done::before {
+  content: "✓ ";
+}
+
+/* ---------- Orders ---------- */
+
+.orders {
+  list-style: none;
+}
+
+.order {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+
+.order__main {
+  min-width: 0;
+}
+
+.order__customer {
+  font-weight: 600;
+}
+
+.order__item {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.order__qty {
+  display: inline-block;
+  margin-left: 8px;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.order__due {
+  flex: none;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.order__due strong {
+  display: block;
+  font-size: 14px;
+}
+
+.order__due time {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.order--soon .order__due strong {
+  color: var(--accent);
+}
+
+.order--today .order__due strong {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 0 10px;
+  border-radius: 999px;
+}
+
+.order--today .order__due time {
+  display: block;
+}
+
+/* ---------- Dialog ---------- */
+
+dialog {
+  width: min(420px, calc(100vw - 32px));
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+dialog::backdrop {
+  background: rgb(30 20 12 / 0.5);
+}
+
+.form h2 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.field {
+  display: block;
+  margin-bottom: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.field span {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-height: 42px;
+  padding: 0 12px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.field-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* ---------- Narrow screens ---------- */
+
+@media (max-width: 860px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 20px 16px 48px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .page-head .btn {
+    width: 100%;
+  }
+
+  .summary__item {
+    padding: 12px 12px 14px;
+  }
+
+  .summary dd {
+    font-size: 28px;
+  }
+
+  .panel {
+    padding: 16px 16px 4px;
+  }
+
+  /* Table rows become two-line entries */
+  .batches,
+  .batches tbody {
+    display: block;
+  }
+
+  .batches thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .batches tr {
+    display: grid;
+    grid-template-columns: 3.4rem auto 1fr auto;
+    grid-template-areas:
+      "time name  name   status"
+      "time roast weight weight";
+    column-gap: 10px;
+    row-gap: 2px;
+    align-items: center;
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .batches td,
+  .batches td:first-child,
+  .batches td:last-child {
+    padding: 0;
+    border: 0;
+  }
+
+  .c-time { grid-area: time; align-self: start; }
+  .c-name { grid-area: name; }
+  .c-roast { grid-area: roast; }
+  .c-status { grid-area: status; align-self: start; }
+
+  .batches .c-weight {
+    grid-area: weight;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .c-weight::after {
+    content: " kg";
+    color: var(--muted);
+  }
+
+  tr[data-status="roasting"] td {
+    background: none;
+  }
+
+  tr[data-status="roasting"] td:first-child {
+    box-shadow: none;
+    padding-left: 0;
+    color: var(--accent);
+  }
+}

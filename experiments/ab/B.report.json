@@ -1,0 +1,188 @@
+{
+  "at": "2026-11-14T00:16:57.716Z",
+  "targets": [
+    {
+      "target": "src/roast-plan/index.html",
+      "runs": [
+        {
+          "viewport": "mobile",
+          "theme": "light",
+          "shot": ".ui-review/shots/src-roast-plan-index-mobile-light.png",
+          "truncated": false,
+          "findings": [],
+          "stats": {
+            "textNodes": 129,
+            "fontSizes": [
+              14,
+              16,
+              20,
+              40
+            ],
+            "fonts": [
+              "IBM Plex Sans JP"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 2251
+          }
+        },
+        {
+          "viewport": "tablet",
+          "theme": "light",
+          "shot": ".ui-review/shots/src-roast-plan-index-tablet-light.png",
+          "truncated": false,
+          "findings": [],
+          "stats": {
+            "textNodes": 129,
+            "fontSizes": [
+              14,
+              16,
+              20,
+              40
+            ],
+            "fonts": [
+              "IBM Plex Sans JP"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 1428
+          }
+        },
+        {
+          "viewport": "desktop",
+          "theme": "light",
+          "shot": ".ui-review/shots/src-roast-plan-index-desktop-light.png",
+          "truncated": false,
+          "findings": [],
+          "stats": {
+            "textNodes": 129,
+            "fontSizes": [
+              14,
+              16,
+              20,
+              40
+            ],
+            "fonts": [
+              "IBM Plex Sans JP"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 921,
+            "focusables": 8
+          }
+        },
+        {
+          "viewport": "desktop",
+          "theme": "dark",
+          "shot": ".ui-review/shots/src-roast-plan-index-desktop-dark.png",
+          "truncated": false,
+          "findings": [],
+          "stats": {
+            "textNodes": 129,
+            "fontSizes": [
+              14,
+              16,
+              20,
+              40
+            ],
+            "fonts": [
+              "IBM Plex Sans JP"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 921
+          }
+        }
+      ]
+    },
+    {
+      "target": "src/roast-plan/index.html?empty=1",
+      "runs": [
+        {
+          "viewport": "mobile",
+          "theme": "light",
+          "shot": ".ui-review/shots/src-roast-plan-index-empty-1-mobile-light.png",
+          "truncated": false,
+          "findings": [],
+          "stats": {
+            "textNodes": 32,
+            "fontSizes": [
+              14,
+              16,
+              20,
+              40
+            ],
+            "fonts": [
+              "IBM Plex Sans JP"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 844
+          }
+        },
+        {
+          "viewport": "tablet",
+          "theme": "light",
+          "shot": ".ui-review/shots/src-roast-plan-index-empty-1-tablet-light.png",
+          "truncated": false,
+          "findings": [],
+          "stats": {
+            "textNodes": 32,
+            "fontSizes": [
+              14,
+              16,
+              20,
+              40
+            ],
+            "fonts": [
+              "IBM Plex Sans JP"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 1180
+          }
+        },
+        {
+          "viewport": "desktop",
+          "theme": "light",
+          "shot": ".ui-review/shots/src-roast-plan-index-empty-1-desktop-light.png",
+          "truncated": false,
+          "findings": [],
+          "stats": {
+            "textNodes": 32,
+            "fontSizes": [
+              14,
+              16,
+              20,
+              40
+            ],
+            "fonts": [
+              "IBM Plex Sans JP"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 900,
+            "focusables": 2
+          }
+        },
+        {
+          "viewport": "desktop",
+          "theme": "dark",
+          "shot": ".ui-review/shots/src-roast-plan-index-empty-1-desktop-dark.png",
+          "truncated": false,
+          "findings": [],
+          "stats": {
+            "textNodes": 32,
+            "fontSizes": [
+              14,
+              16,
+              20,
+              40
+            ],
+            "fonts": [
+              "IBM Plex Sans JP"
+            ],
+            "unknownBg": 0,
+            "pageHeight": 900
+          }
+        }
+      ]
+    }
+  ],
+  "errors": 0,
+  "warnings": 0,
+  "findings": []
+}

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>今日の焙煎計画</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="page-head">
+    <div>
+      <h1>今日の焙煎計画</h1>
+      <p class="date"><time datetime="2026-11-13">2026年11月13日（金）</time></p>
+    </div>
+    <button type="button" class="btn btn-primary" id="open-add">
+      <span aria-hidden="true">＋</span> バッチを追加
+    </button>
+  </header>
+
+  <section class="day" aria-label="今日の合計とタイムライン">
+    <dl class="totals">
+      <div><dt>バッチ</dt><dd><span id="total-count">8</span></dd></div>
+      <div><dt>合計</dt><dd><span id="total-kg">34.0</span><small>kg</small></dd></div>
+      <div><dt>未着手</dt><dd><span id="total-pending">4</span></dd></div>
+    </dl>
+
+    <ul class="legend" aria-label="焙煎度の色">
+      <li><span class="bean-dot" data-roast="light"></span>浅煎り</li>
+      <li><span class="bean-dot" data-roast="medium-light"></span>中浅煎り</li>
+      <li><span class="bean-dot" data-roast="medium"></span>中煎り</li>
+      <li><span class="bean-dot" data-roast="medium-dark"></span>中深煎り</li>
+      <li><span class="bean-dot" data-roast="dark"></span>深煎り</li>
+    </ul>
+
+    <!-- 表の内容から JS で描画する1日のタイムライン -->
+    <nav class="strip" id="strip" aria-label="タイムライン" hidden>
+      <div class="strip-track" id="strip-track"></div>
+      <div class="strip-hours" id="strip-hours" aria-hidden="true"></div>
+    </nav>
+  </section>
+
+  <main class="columns">
+    <section class="batches" aria-labelledby="batches-h">
+      <h2 id="batches-h">焙煎するバッチ</h2>
+      <table class="batch-table">
+        <thead>
+          <tr>
+            <th scope="col" class="c-no">No.</th>
+            <th scope="col" class="c-time">開始予定</th>
+            <th scope="col" class="c-bean">豆</th>
+            <th scope="col" class="c-roast">焙煎度</th>
+            <th scope="col" class="c-kg">重量</th>
+            <th scope="col" class="c-state">状態</th>
+          </tr>
+        </thead>
+        <tbody id="batch-rows">
+          <tr id="b1" data-start="08:30" data-roast="light" data-kg="4" data-state="done">
+            <td class="c-no">1</td>
+            <td class="c-time">08:30</td>
+            <td class="c-bean">エチオピア イルガチェフェ G1</td>
+            <td class="c-roast"><span class="bean-dot" data-roast="light"></span><span>浅煎り</span></td>
+            <td class="c-kg">4.0<small>kg</small></td>
+            <td class="c-state">
+              <select aria-label="状態">
+                <option value="pending">未着手</option>
+                <option value="roasting">焙煎中</option>
+                <option value="done" selected>完了</option>
+              </select>
+            </td>
+          </tr>
+          <tr id="b2" data-start="09:00" data-roast="medium-light" data-kg="4" data-state="done">
+            <td class="c-no">2</td>
+            <td class="c-time">09:00</td>
+            <td class="c-bean">ケニア キリニャガ AA</td>
+            <td class="c-roast"><span class="bean-dot" data-roast="medium-light"></span><span>中浅煎り</span></td>
+            <td class="c-kg">4.0<small>kg</small></td>
+            <td class="c-state">
+              <select aria-label="状態">
+                <option value="pending">未着手</option>
+                <option value="roasting">焙煎中</option>
+                <option value="done" selected>完了</option>
+              </select>
+            </td>
+          </tr>
+          <tr id="b3" data-start="09:30" data-roast="medium" data-kg="4.5" data-state="done">
+            <td class="c-no">3</td>
+            <td class="c-time">09:30</td>
+            <td class="c-bean">グアテマラ アンティグア</td>
+            <td class="c-roast"><span class="bean-dot" data-roast="medium"></span><span>中煎り</span></td>
+            <td class="c-kg">4.5<small>kg</small></td>
+            <td class="c-state">
+              <select aria-label="状態">
+                <option value="pending">未着手</option>
+                <option value="roasting">焙煎中</option>
+                <option value="done" selected>完了</option>
+              </select>
+            </td>
+          </tr>
+          <tr id="b4" data-start="10:30" data-roast="medium" data-kg="4.5" data-state="roasting">
+            <td class="c-no">4</td>
+            <td class="c-time">10:30</td>
+            <td class="c-bean">コロンビア ウィラ</td>
+            <td class="c-roast"><span class="bean-dot" data-roast="medium"></span><span>中煎り</span></td>
+            <td class="c-kg">4.5<small>kg</small></td>
+            <td class="c-state">
+              <select aria-label="状態">
+                <option value="pending">未着手</option>
+                <option value="roasting" selected>焙煎中</option>
+                <option value="done">完了</option>
+              </select>
+            </td>
+          </tr>
+          <tr id="b5" data-start="11:00" data-roast="medium-dark" data-kg="5" data-state="pending">
+            <td class="c-no">5</td>
+            <td class="c-time">11:00</td>
+            <td class="c-bean">ブラジル セラード ナチュラル</td>
+            <td class="c-roast"><span class="bean-dot" data-roast="medium-dark"></span><span>中深煎り</span></td>
+            <td class="c-kg">5.0<small>kg</small></td>
+            <td class="c-state">
+              <select aria-label="状態">
+                <option value="pending" selected>未着手</option>
+                <option value="roasting">焙煎中</option>
+                <option value="done">完了</option>
+              </select>
+            </td>
+          </tr>
+          <tr id="b6" data-start="11:30" data-roast="medium-dark" data-kg="5" data-state="pending">
+            <td class="c-no">6</td>
+            <td class="c-time">11:30</td>
+            <td class="c-bean">ブラジル セラード ナチュラル</td>
+            <td class="c-roast"><span class="bean-dot" data-roast="medium-dark"></span><span>中深煎り</span></td>
+            <td class="c-kg">5.0<small>kg</small></td>
+            <td class="c-state">
+              <select aria-label="状態">
+                <option value="pending" selected>未着手</option>
+                <option value="roasting">焙煎中</option>
+                <option value="done">完了</option>
+              </select>
+            </td>
+          </tr>
+          <tr id="b7" data-start="13:30" data-roast="dark" data-kg="4" data-state="pending">
+            <td class="c-no">7</td>
+            <td class="c-time">13:30</td>
+            <td class="c-bean">マンデリン トバコ</td>
+            <td class="c-roast"><span class="bean-dot" data-roast="dark"></span><span>深煎り</span></td>
+            <td class="c-kg">4.0<small>kg</small></td>
+            <td class="c-state">
+              <select aria-label="状態">
+                <option value="pending" selected>未着手</option>
+                <option value="roasting">焙煎中</option>
+                <option value="done">完了</option>
+              </select>
+            </td>
+          </tr>
+          <tr id="b8" data-start="14:00" data-roast="medium-dark" data-kg="3" data-state="pending">
+            <td class="c-no">8</td>
+            <td class="c-time">14:00</td>
+            <td class="c-bean">デカフェ コロンビア</td>
+            <td class="c-roast"><span class="bean-dot" data-roast="medium-dark"></span><span>中深煎り</span></td>
+            <td class="c-kg">3.0<small>kg</small></td>
+            <td class="c-state">
+              <select aria-label="状態">
+                <option value="pending" selected>未着手</option>
+                <option value="roasting">焙煎中</option>
+                <option value="done">完了</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="empty" id="empty" hidden>今日のバッチはまだありません。「バッチを追加」から登録してください。</p>
+    </section>
+
+    <aside class="orders" aria-labelledby="orders-h">
+      <h2 id="orders-h">納期が近い受注</h2>
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th scope="col">納期</th>
+            <th scope="col">顧客・商品</th>
+            <th scope="col" class="o-qty">数量</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="is-urgent">
+            <td class="o-due"><time datetime="2026-11-14">11/14（土）</time><span class="o-left">明日</span></td>
+            <td><strong>カフェ ミナト</strong><span class="o-item">コロンビア ウィラ 中煎り 200g</span></td>
+            <td class="o-qty">20<small>袋</small></td>
+          </tr>
+          <tr class="is-urgent">
+            <td class="o-due"><time datetime="2026-11-14">11/14（土）</time><span class="o-left">明日</span></td>
+            <td><strong>喫茶 つぐみ</strong><span class="o-item">グアテマラ アンティグア 中煎り 1kg</span></td>
+            <td class="o-qty">4<small>袋</small></td>
+          </tr>
+          <tr>
+            <td class="o-due"><time datetime="2026-11-15">11/15（日）</time><span class="o-left">あと2日</span></td>
+            <td><strong>ベーカリー こむぎ</strong><span class="o-item">デカフェ コロンビア 500g</span></td>
+            <td class="o-qty">4<small>袋</small></td>
+          </tr>
+          <tr>
+            <td class="o-due"><time datetime="2026-11-16">11/16（月）</time><span class="o-left">あと3日</span></td>
+            <td><strong>オンラインストア定期便</strong><span class="o-item">エチオピア イルガチェフェ 浅煎り 200g</span></td>
+            <td class="o-qty">32<small>袋</small></td>
+          </tr>
+          <tr>
+            <td class="o-due"><time datetime="2026-11-17">11/17（火）</time><span class="o-left">あと4日</span></td>
+            <td><strong>ホテル青葉</strong><span class="o-item">ブラジル セラード 中深煎り 1kg</span></td>
+            <td class="o-qty">8<small>袋</small></td>
+          </tr>
+          <tr>
+            <td class="o-due"><time datetime="2026-11-18">11/18（水）</time><span class="o-left">あと5日</span></td>
+            <td><strong>珈琲と本 とまり木</strong><span class="o-item">マンデリン トバコ 深煎り 500g</span></td>
+            <td class="o-qty">6<small>袋</small></td>
+          </tr>
+        </tbody>
+      </table>
+    </aside>
+  </main>
+
+  <dialog id="add-dialog" aria-labelledby="add-h">
+    <form method="dialog" id="add-form">
+      <h2 id="add-h">バッチを追加</h2>
+      <label>豆の名前
+        <input name="bean" type="text" required autocomplete="off" placeholder="例：コスタリカ タラズ">
+      </label>
+      <label>焙煎度
+        <select name="roast" required>
+          <option value="light">浅煎り</option>
+          <option value="medium-light">中浅煎り</option>
+          <option value="medium" selected>中煎り</option>
+          <option value="medium-dark">中深煎り</option>
+          <option value="dark">深煎り</option>
+        </select>
+      </label>
+      <div class="field-row">
+        <label>重量（kg）
+          <input name="kg" type="number" required min="0.5" max="5" step="0.5" value="4" inputmode="decimal">
+        </label>
+        <label>開始予定時刻
+          <input name="start" type="time" required value="14:30">
+        </label>
+      </div>
+      <p class="hint">焙煎機の容量は1バッチ 5kg までです。</p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="cancel-add">キャンセル</button>
+        <button type="submit" class="btn btn-primary">バッチを追加</button>
+      </div>
+    </form>
+  </dialog>
+
+  <template id="row-tpl">
+    <tr data-state="pending">
+      <td class="c-no"></td>
+      <td class="c-time"></td>
+      <td class="c-bean"></td>
+      <td class="c-roast"><span class="bean-dot"></span><span></span></td>
+      <td class="c-kg"></td>
+      <td class="c-state">
+        <select aria-label="状態">
+          <option value="pending" selected>未着手</option>
+          <option value="roasting">焙煎中</option>
+          <option value="done">完了</option>
+        </select>
+      </td>
+    </tr>
+  </template>
+
+  <script>
+  (function () {
+    // ダミーの「現在時刻」。状態のダミーデータと辻褄を合わせるため固定している。
+    var NOW = '10:40';
+    var BATCH_MINUTES = 25; // 焙煎＋冷却のおおよその所要時間
+    var ROAST = { 'light': '浅煎り', 'medium-light': '中浅煎り', 'medium': '中煎り', 'medium-dark': '中深煎り', 'dark': '深煎り' };
+    var STATE = { pending: '未着手', roasting: '焙煎中', done: '完了' };
+
+    var tbody = document.getElementById('batch-rows');
+    var strip = document.getElementById('strip');
+    var track = document.getElementById('strip-track');
+    var hours = document.getElementById('strip-hours');
+
+    function minutes(hhmm) {
+      var p = hhmm.split(':');
+      return Number(p[0]) * 60 + Number(p[1]);
+    }
+    function rows() { return Array.prototype.slice.call(tbody.rows); }
+
+    function refresh() {
+      var list = rows();
+      var kg = 0, pending = 0;
+      list.forEach(function (tr, i) {
+        tr.id = 'b' + (i + 1);
+        tr.querySelector('.c-no').textContent = i + 1;
+        kg += Number(tr.dataset.kg);
+        if (tr.dataset.state === 'pending') pending++;
+      });
+      document.getElementById('total-count').textContent = list.length;
+      document.getElementById('total-kg').textContent = kg.toFixed(1);
+      document.getElementById('total-pending').textContent = pending;
+      document.getElementById('empty').hidden = list.length > 0;
+      drawStrip(list);
+    }
+
+    function drawStrip(list) {
+      var from = 8 * 60, to = 16 * 60;
+      list.forEach(function (tr) {
+        var s = minutes(tr.dataset.start);
+        from = Math.min(from, Math.floor(s / 60) * 60);
+        to = Math.max(to, Math.ceil((s + BATCH_MINUTES) / 60) * 60);
+      });
+      var span = to - from;
+      var pct = function (m) { return ((m - from) / span * 100) + '%'; };
+
+      track.textContent = '';
+      hours.textContent = '';
+      for (var h = from; h <= to; h += 60) {
+        var tick = document.createElement('span');
+        tick.style.left = pct(h);
+        tick.textContent = h / 60;
+        hours.appendChild(tick);
+      }
+      list.forEach(function (tr, i) {
+        var a = document.createElement('a');
+        a.className = 'block';
+        a.href = '#' + tr.id;
+        a.dataset.roast = tr.dataset.roast;
+        a.dataset.state = tr.dataset.state;
+        a.style.left = pct(minutes(tr.dataset.start));
+        a.style.width = (BATCH_MINUTES / span * 100) + '%';
+        a.textContent = i + 1;
+        a.title = tr.dataset.start + ' ' + tr.querySelector('.c-bean').textContent;
+        a.setAttribute('aria-label', 'バッチ' + (i + 1) + '、' + a.title + '、' + STATE[tr.dataset.state]);
+        track.appendChild(a);
+      });
+      var now = minutes(NOW);
+      if (now >= from && now <= to) {
+        var line = document.createElement('span');
+        line.className = 'now';
+        line.style.left = pct(now);
+        line.textContent = '現在 ' + NOW;
+        track.appendChild(line);
+      }
+      strip.hidden = false;
+    }
+
+    tbody.addEventListener('change', function (e) {
+      if (e.target.tagName !== 'SELECT') return;
+      e.target.closest('tr').dataset.state = e.target.value;
+      refresh();
+    });
+
+    var dialog = document.getElementById('add-dialog');
+    var form = document.getElementById('add-form');
+    document.getElementById('open-add').addEventListener('click', function () { dialog.showModal(); });
+    document.getElementById('cancel-add').addEventListener('click', function () { dialog.close(); });
+
+    form.addEventListener('submit', function () {
+      var f = form.elements;
+      var tr = document.getElementById('row-tpl').content.firstElementChild.cloneNode(true);
+      var kg = Number(f.kg.value);
+      tr.dataset.start = f.start.value;
+      tr.dataset.roast = f.roast.value;
+      tr.dataset.kg = kg;
+      tr.querySelector('.c-time').textContent = f.start.value;
+      tr.querySelector('.c-bean').textContent = f.bean.value.trim();
+      var roastCell = tr.querySelector('.c-roast');
+      roastCell.firstElementChild.dataset.roast = f.roast.value;
+      roastCell.lastElementChild.textContent = ROAST[f.roast.value];
+      var kgCell = tr.querySelector('.c-kg');
+      kgCell.textContent = kg.toFixed(1);
+      kgCell.appendChild(document.createElement('small')).textContent = 'kg';
+
+      // 開始時刻の順に差し込む
+      var after = rows().filter(function (r) { return minutes(r.dataset.start) > minutes(f.start.value); })[0];
+      tbody.insertBefore(tr, after || null);
+      tr.classList.add('is-new');
+      refresh();
+      form.reset();
+      tr.scrollIntoView({ block: 'nearest' });
+    });
+
+    refresh();
+  })();
+  </script>
+</body>
+</html>

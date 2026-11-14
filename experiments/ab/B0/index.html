@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今日の焙煎計画 — 焙煎帳</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../../../design/tokens.css">
+<link rel="stylesheet" href="roast-plan.css">
+</head>
+<body>
+<div class="page">
+
+  <header class="masthead">
+    <div class="masthead__title">
+      <p class="product">焙煎帳</p>
+      <h1>今日の焙煎計画 <time datetime="2026-11-13">11/13(金)</time></h1>
+    </div>
+    <button type="button" class="btn btn--primary" id="open-add">バッチを追加</button>
+  </header>
+
+  <section class="summary" aria-labelledby="summary-h">
+    <h2 id="summary-h" class="visually-hidden">今日の残りと合計</h2>
+    <p class="remaining">
+      <span class="remaining__label">残り</span>
+      <span class="remaining__item"><span class="figure" id="rem-count">5</span><span class="unit">バッチ</span></span>
+      <span class="remaining__item"><span class="figure" id="rem-kg">21.5</span><span class="unit">kg</span></span>
+    </p>
+    <p class="next" id="next-line">
+      <span class="next__label">次</span>
+      <span id="next-text">08:45 ケニア ニエリ カラティナ AA 3.0 kg</span>
+    </p>
+    <dl class="totals">
+      <div><dt>今日の合計</dt><dd><span id="tot-count">8</span> バッチ・<span id="tot-kg">46.0</span> kg</dd></div>
+      <div><dt>未着手</dt><dd><span id="tot-todo">4</span> バッチ</dd></div>
+      <div><dt>納期</dt><dd><a href="#orders-h">今日 1 件・明日 2 件</a></dd></div>
+    </dl>
+  </section>
+
+  <div class="columns">
+    <section class="batches" aria-labelledby="batches-h">
+      <h2 id="batches-h">今日のバッチ</h2>
+      <table class="sheet batch-table" id="batch-table">
+        <thead>
+          <tr>
+            <th scope="col">開始予定</th>
+            <th scope="col">豆 / 焙煎度</th>
+            <th scope="col" class="num">重量</th>
+            <th scope="col">状態</th>
+          </tr>
+        </thead>
+        <tbody id="batch-body">
+          <tr data-state="done" data-kg="12.0" data-time="06:30">
+            <td class="time"><time>06:30</time></td>
+            <th scope="row" class="bean"><span class="bean__name">ブラジル セラード ムンドノーボ ナチュラル</span><span class="roast"><span class="roast__mark" data-roast="4"></span>中深煎り</span></th>
+            <td class="num kg">12.0<span class="unit">kg</span></td>
+            <td class="state"></td>
+          </tr>
+          <tr data-state="done" data-kg="8.0" data-time="07:05">
+            <td class="time"><time>07:05</time></td>
+            <th scope="row" class="bean"><span class="bean__name">コロンビア ウイラ ピタリート ウォッシュト</span><span class="roast"><span class="roast__mark" data-roast="3"></span>中煎り</span></th>
+            <td class="num kg">8.0<span class="unit">kg</span></td>
+            <td class="state"></td>
+          </tr>
+          <tr data-state="done" data-kg="4.5" data-time="07:40">
+            <td class="time"><time>07:40</time></td>
+            <th scope="row" class="bean"><span class="bean__name">エチオピア イルガチェフェ コンガ農協 ナチュラル</span><span class="roast"><span class="roast__mark" data-roast="1"></span>浅煎り</span></th>
+            <td class="num kg">4.5<span class="unit">kg</span></td>
+            <td class="state"></td>
+          </tr>
+          <tr data-state="roasting" data-kg="6.0" data-time="08:10">
+            <td class="time"><time>08:10</time></td>
+            <th scope="row" class="bean"><span class="bean__name">グアテマラ アンティグア サンタカタリーナ農園</span><span class="roast"><span class="roast__mark" data-roast="3"></span>中煎り</span></th>
+            <td class="num kg">6.0<span class="unit">kg</span></td>
+            <td class="state"></td>
+          </tr>
+          <tr data-state="todo" data-kg="3.0" data-time="08:45">
+            <td class="time"><time>08:45</time></td>
+            <th scope="row" class="bean"><span class="bean__name">ケニア ニエリ カラティナ AA</span><span class="roast"><span class="roast__mark" data-roast="2"></span>中浅煎り</span></th>
+            <td class="num kg">3.0<span class="unit">kg</span></td>
+            <td class="state"></td>
+          </tr>
+          <tr data-state="todo" data-kg="10.0" data-time="09:20">
+            <td class="time"><time>09:20</time></td>
+            <th scope="row" class="bean"><span class="bean__name">マンデリン リントン G1</span><span class="roast"><span class="roast__mark" data-roast="5"></span>深煎り</span></th>
+            <td class="num kg">10.0<span class="unit">kg</span></td>
+            <td class="state"></td>
+          </tr>
+          <tr data-state="todo" data-kg="2.0" data-time="09:55">
+            <td class="time"><time>09:55</time></td>
+            <th scope="row" class="bean"><span class="bean__name">デカフェ メキシコ チアパス マウンテンウォーター</span><span class="roast"><span class="roast__mark" data-roast="4"></span>中深煎り</span></th>
+            <td class="num kg">2.0<span class="unit">kg</span></td>
+            <td class="state"></td>
+          </tr>
+          <tr data-state="todo" data-kg="0.5" data-time="10:30">
+            <td class="time"><time>10:30</time></td>
+            <th scope="row" class="bean"><span class="bean__name">パナマ ボケテ ゲイシャ（試験焙煎）</span><span class="roast"><span class="roast__mark" data-roast="1"></span>浅煎り</span></th>
+            <td class="num kg">0.5<span class="unit">kg</span></td>
+            <td class="state"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="empty" id="batch-empty" hidden>
+        <p>今日の焙煎予定はありません。</p>
+        <button type="button" class="btn" id="open-add-empty">バッチを追加</button>
+      </div>
+    </section>
+
+    <section class="orders" aria-labelledby="orders-h">
+      <h2 id="orders-h" tabindex="-1">納期が近い受注</h2>
+      <table class="sheet order-table">
+        <thead>
+          <tr>
+            <th scope="col">納期</th>
+            <th scope="col">顧客 / 商品</th>
+            <th scope="col" class="num">数量</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="is-today">
+            <td class="due"><time datetime="2026-11-13">11/13(金)</time><span class="due__tag due__tag--today">今日</span></td>
+            <th scope="row" class="order"><span class="order__customer">珈琲と古本 つきよみ堂 吉祥寺店</span><span class="order__item">エチオピア イルガチェフェ コンガ農協 ナチュラル</span></th>
+            <td class="num qty">200 g × 12</td>
+          </tr>
+          <tr>
+            <td class="due"><time datetime="2026-11-14">11/14(土)</time><span class="due__tag due__tag--tomorrow">明日</span></td>
+            <th scope="row" class="order"><span class="order__customer">喫茶 灯台</span><span class="order__item">マンデリン リントン G1</span></th>
+            <td class="num qty">1 kg × 5</td>
+          </tr>
+          <tr>
+            <td class="due"><time datetime="2026-11-14">11/14(土)</time><span class="due__tag due__tag--tomorrow">明日</span></td>
+            <th scope="row" class="order"><span class="order__customer">ベーカリー こむぎ舎</span><span class="order__item">ブラジル セラード ムンドノーボ ナチュラル</span></th>
+            <td class="num qty">500 g × 6</td>
+          </tr>
+          <tr>
+            <td class="due"><time datetime="2026-11-16">11/16(月)</time><span class="due__rest">あと 3 日</span></td>
+            <th scope="row" class="order"><span class="order__customer">丘の上ホテル 朝食室</span><span class="order__item">コロンビア ウイラ ピタリート ウォッシュト</span></th>
+            <td class="num qty">1 kg × 8</td>
+          </tr>
+          <tr>
+            <td class="due"><time datetime="2026-11-17">11/17(火)</time><span class="due__rest">あと 4 日</span></td>
+            <th scope="row" class="order"><span class="order__customer">オンライン定期便 11 月後半</span><span class="order__item">デカフェ メキシコ チアパス マウンテンウォーター</span></th>
+            <td class="num qty">200 g × 24</td>
+          </tr>
+          <tr>
+            <td class="due"><time datetime="2026-11-19">11/19(木)</time><span class="due__rest">あと 6 日</span></td>
+            <th scope="row" class="order"><span class="order__customer">コワーキング 縁側</span><span class="order__item">ケニア ニエリ カラティナ AA</span></th>
+            <td class="num qty">100 g × 10</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>
+
+<dialog id="add-dialog" aria-labelledby="add-h">
+  <form method="dialog" id="add-form">
+    <h2 id="add-h">バッチを追加</h2>
+    <div class="field">
+      <label for="f-bean">豆の名前</label>
+      <input id="f-bean" name="bean" type="text" required autocomplete="off">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="f-roast">焙煎度</label>
+        <select id="f-roast" name="roast">
+          <option value="1">浅煎り</option>
+          <option value="2">中浅煎り</option>
+          <option value="3" selected>中煎り</option>
+          <option value="4">中深煎り</option>
+          <option value="5">深煎り</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-kg">重量（kg）</label>
+        <input id="f-kg" name="kg" type="number" min="0.5" max="12" step="0.1" value="6.0" required inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="f-time">開始予定</label>
+        <input id="f-time" name="time" type="time" value="11:05" required>
+      </div>
+    </div>
+    <div class="dialog-actions">
+      <button type="button" class="btn" id="cancel-add">やめる</button>
+      <button type="submit" class="btn btn--primary">計画に追加</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="roast-plan.js"></script>
+</body>
+</html>

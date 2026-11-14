@@ -1,0 +1,15 @@
+ui-shot: 描画監査  4 errors, 0 warnings
+  ERROR  off-scale-text  トークンに無い文字サイズ 24px（スケール: 12, 14, 16, 20, 28, 40）  <h1>  [mobile/light]
+  ERROR  off-scale-text  トークンに無い文字サイズ 15px（スケール: 12, 14, 16, 20, 28, 40）  <span>  [mobile/light, tablet/light, desktop/light, desktop/dark]
+  ERROR  off-scale-text  トークンに無い文字サイズ 13px（スケール: 12, 14, 16, 20, 28, 40）  <dt>  [mobile/light, tablet/light, desktop/light, desktop/dark]
+  ERROR  off-scale-text  トークンに無い文字サイズ 36px（スケール: 12, 14, 16, 20, 28, 40）  <span#sum-count>  [tablet/light, desktop/light, desktop/dark]
+
+experiments/ab/A/index.html: 文字サイズ 12/13/14/15/16/24/28px, 書体 Hiragino Sans
+
+スクリーンショット（Read ツールで実際に開いて確認すること。開かないと完了できません）:
+  /home/user/testapppapp/.ui-review/shots/A-mobile-light.png
+  /home/user/testapppapp/.ui-review/shots/A-tablet-light.png
+  /home/user/testapppapp/.ui-review/shots/A-desktop-light.png
+  /home/user/testapppapp/.ui-review/shots/A-desktop-dark.png
+
+次: 各画像を Read で開き、.claude/skills/ui-design/references/critique.md の観点で批評 → 直す → 再実行。

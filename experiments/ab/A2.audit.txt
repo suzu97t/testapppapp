@@ -1,0 +1,26 @@
+ui-shot: 描画監査  12 errors, 3 warnings
+  ERROR  off-scale-text  トークンに無い文字サイズ 23px（スケール: 12, 14, 16, 20, 28, 40）  <h1>  [mobile/light]
+  ERROR  off-scale-text  トークンに無い文字サイズ 15px（スケール: 12, 14, 16, 20, 28, 40）  <time>  [mobile/light, tablet/light, desktop/light, desktop/dark]
+  ERROR  off-scale-text  トークンに無い文字サイズ 13px（スケール: 12, 14, 16, 20, 28, 40）  <dt>  [mobile/light, tablet/light, desktop/light, desktop/dark]
+  ERROR  off-scale-text  トークンに無い文字サイズ 17px（スケール: 12, 14, 16, 20, 28, 40）  <h2#batches-h>  [mobile/light, tablet/light, desktop/light, desktop/dark]
+  ERROR  off-scale-text  トークンに無い文字サイズ 12.5px（スケール: 12, 14, 16, 20, 28, 40）  <th.c-no>  [mobile/light, tablet/light, desktop/light, desktop/dark]
+  ERROR  tiny-text  文字が小さすぎる（10.8px < 12px）— 「kg」  <small>  [mobile/light, tablet/light, desktop/light, desktop/dark]
+  ERROR  off-scale-text  トークンに無い文字サイズ 10.8px（スケール: 12, 14, 16, 20, 28, 40）  <small>  [mobile/light, tablet/light, desktop/light, desktop/dark]
+  WARN  too-many-sizes  文字サイズが 8 種類ある（10.8, 12, 12.5, 13, 15, 17, 23, 28px）。階層が曖昧になっていないか  [mobile/light]
+  ERROR  tap-target  タップ領域が小さい（19×36px < 24px）  <a.block>  [mobile/light, mobile/light, mobile/light, mobile/light, mobile/light, mobile/light, mobile/light, mobile/light]
+  ERROR  contrast  コントラスト 2.54:1（必要 4.5:1）— 「1」 13px  <a.block>  [tablet/light, desktop/light, desktop/dark]
+  ERROR  contrast  コントラスト 2.14:1（必要 4.5:1）— 「2」 13px  <a.block>  [tablet/light, desktop/light, desktop/dark]
+  ERROR  contrast  コントラスト 2.73:1（必要 4.5:1）— 「3」 13px  <a.block>  [tablet/light, desktop/light, desktop/dark]
+  ERROR  off-scale-text  トークンに無い文字サイズ 34px（スケール: 12, 14, 16, 20, 28, 40）  <span#total-count>  [tablet/light, desktop/light, desktop/dark]
+  WARN  too-many-sizes  文字サイズが 8 種類ある（10.8, 12, 12.5, 13, 15, 17, 28, 34px）。階層が曖昧になっていないか  [tablet/light, desktop/light, desktop/dark]
+  WARN  tap-target-44  44px 未満の操作要素が 8 個（指で押す主要操作は 44px 以上に）  [tablet/light]
+
+experiments/ab/A2/index.html: 文字サイズ 10.8/12/12.5/13/15/17/23/28px, 書体 Zen Kaku Gothic New
+
+スクリーンショット（Read ツールで実際に開いて確認すること。開かないと完了できません）:
+  /home/user/testapppapp/.ui-review/shots/A2-mobile-light.png
+  /home/user/testapppapp/.ui-review/shots/A2-tablet-light.png
+  /home/user/testapppapp/.ui-review/shots/A2-desktop-light.png
+  /home/user/testapppapp/.ui-review/shots/A2-desktop-dark.png
+
+次: 各画像を Read で開き、.claude/skills/ui-design/references/critique.md の観点で批評 → 直す → 再実行。
