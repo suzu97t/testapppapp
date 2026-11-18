@@ -3,3 +3,6 @@ node_modules/
 dist/
 CLAUDE.local.md
 .claude/settings.local.json
+# imozuru の調査: 原文の写しは再配布しない。report.html は extracts.json から再生成できる
+research/*/_research/sources/
+research/*/_research/report.html

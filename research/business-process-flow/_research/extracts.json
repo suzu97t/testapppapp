@@ -1,0 +1,434 @@
+{
+  "title": "業務フローの整理方法と品質基準",
+  "question": "業務フローを整理（可視化・分析・改善）するには、どんな手順・記法・粒度で進め、出来上がったフロー図の良し悪しを何で判定すればよいか。その基準の元になった原典・研究はあるか",
+  "stopped": "2周たどり、調査の論点10個のうち7個に原文が付き、2個は一部のみ。残り（スイムレーン・SIPOC・VSM の原典、Dumas らの教科書本体）はどれも有料の書籍の先にある",
+  "claims": [
+    {
+      "claim": "1. この分野の知見はどこに集まっているか（媒体）",
+      "status": "根拠あり",
+      "note": "Mendling らはフロー図の品質の研究を4つの流れに分けている。日本語では IPA・政府の EA/BPMN 資料・自治体の BPR ハンドブック・業務可視化の実務ブログに分かれていた。",
+      "quotes": [
+        {
+          "file": "mendling-2010-7pmg.txt",
+          "line": 141,
+          "end": 144,
+          "text": "mainly four streams of work that discuss guidelines and quality issues for such conceptual process models: top-down quality frameworks, bottom-up metrics related to quality aspects, empirical surveys related to modeling techniques, and pragmatic guidelines.",
+          "ja": "概念的なプロセスモデルの指針と品質を論じる研究は主に4つの流れがある：トップダウンの品質フレームワーク、品質に関わるボトムアップの指標、モデリング技法の実証調査、そして実務的な指針。",
+          "mark": "〔論文〕"
+        }
+      ]
+    },
+    {
+      "claim": "2. 整理の進め方（手順）",
+      "status": "根拠あり",
+      "note": "石川県は3ステップ（洗い出す→図にする→関係者と確かめる）を示す。IPA は As-Is と To-Be で作る目的が違うと書く。",
+      "quotes": [
+        {
+          "file": "ishikawa-2026-bpr-handbook.txt",
+          "line": 500,
+          "end": 502,
+          "text": "図形ルールに基づきフローに起こす",
+          "mark": "〔公式〕"
+        },
+        {
+          "file": "ishikawa-2026-bpr-handbook.txt",
+          "line": 507,
+          "text": "作成したフローを関係者で確認し、手順の過不足や認識のずれを修正する",
+          "mark": "〔公式〕"
+        },
+        {
+          "file": "ishikawa-2026-bpr-handbook.txt",
+          "line": 435,
+          "text": "なお、BPRにおいては「業務フローを完璧に作成すること」自体が目的ではない点に留意いた",
+          "mark": "〔公式〕"
+        },
+        {
+          "file": "ipa-2019-youken-guide.txt",
+          "line": 19720,
+          "end": 19722,
+          "text": "As-Is 業務フロー作成の目的は、 現状の業務の流れをフロー図に書き出すことにより、現状の業務の流れを明確にし、 そこに潜む問題点や課題を抽出することである。",
+          "mark": "〔公式〕"
+        }
+      ]
+    },
+    {
+      "claim": "3. 情報の集め方（文書・観察・インタビュー・ワークショップ）",
+      "status": "一部のみ",
+      "note": "Dumas らの教科書（有料）を引く論文から。教科書本体は届いていない。",
+      "quotes": [
+        {
+          "file": "arxiv-2410.11915-manual-process-discovery.txt",
+          "line": 869,
+          "text": "for conducting interviews: (i) backward and (ii) forward process discovery.",
+          "ja": "インタビューの進め方として（i）後ろから（ii）前から、の2つがある。",
+          "mark": "〔論文〕"
+        },
+        {
+          "file": "arxiv-2410.11915-manual-process-discovery.txt",
+          "line": 1061,
+          "end": 1063,
+          "text": "that small, hierarchically homogeneous groups work more efficiently than large groups or groups with hierarchical heterogeneity. It is not recommended to include executives and their employees in the same workshop",
+          "ja": "小さく、階層のそろったグループのほうが、大きいグループや階層の混ざったグループより効率よく進む。役員とその部下を同じワークショップに入れることは勧めない。",
+          "mark": "〔論文〕"
+        },
+        {
+          "file": "arxiv-2410.11915-manual-process-discovery.txt",
+          "line": 1088,
+          "text": "idealized future process rather than the",
+          "ja": "（インタビューの短所として）現状ではなく理想化した将来のプロセスを語ってしまう危険",
+          "mark": "〔論文〕"
+        }
+      ]
+    },
+    {
+      "claim": "4. 粒度と階層の決め方",
+      "status": "根拠あり",
+      "note": "石川県は BPR 用には「作業単位」と指定。IPA は三階層の二階層目、政府資料は目的別にレベル1/2に分ける。",
+      "quotes": [
+        {
+          "file": "ishikawa-2026-bpr-handbook.txt",
+          "line": 512,
+          "end": 513,
+          "text": "粒度 が粗すぎると業務の実態が把握できず、逆に細かすぎると全体像が見えづらくなるため",
+          "mark": "〔公式〕"
+        },
+        {
+          "file": "ishikawa-2026-bpr-handbook.txt",
+          "line": 515,
+          "end": 516,
+          "text": "そのため、記述する粒度は「作業単 位」とすること。",
+          "mark": "〔公式〕"
+        },
+        {
+          "file": "ipa-2019-youken-guide.txt",
+          "line": 19710,
+          "text": "業務フローは、三階層で業務を表現したときの二階層目を中心に業務を表現したもの",
+          "mark": "〔公式〕"
+        },
+        {
+          "file": "asist-bpmn-government-granularity.txt",
+          "line": 158,
+          "end": 160,
+          "text": "BPMNで業務フローを作成するに当たっては、使用する目的や主体に応じて、表記の粒度を分けることが推奨 されている。",
+          "mark": "〔公式〕"
+        }
+      ]
+    },
+    {
+      "claim": "5. 記法の選び方",
+      "status": "根拠あり",
+      "note": "IPA は記法を1つに決めず「プロジェクトに適したもの」とする。政府資料は WFA と BPMN を比べている。",
+      "quotes": [
+        {
+          "file": "ipa-2019-youken-guide.txt",
+          "line": 19799,
+          "end": 19800,
+          "text": "チャート、DFD(Data Flow Diagram)、UML（Unified Modeling Language）のアクティ ビティ図、PFD（Process Flow Diagram）などがある。プロジェクトに適したものを選",
+          "mark": "〔公式〕"
+        },
+        {
+          "file": "ipa-2019-youken-guide.txt",
+          "line": 19795,
+          "text": "組織間でのやり取り、分担を明確にしたいときなどは、スイムレーンなどを使って分",
+          "mark": "〔公式〕"
+        },
+        {
+          "file": "asist-bpmn-government-granularity.txt",
+          "line": 145,
+          "end": 147,
+          "text": "WFAに比べて①システムの操作フ ロー中心ではないために、非システム系の者でも利用が容易であること",
+          "mark": "〔公式〕"
+        },
+        {
+          "file": "soumu-ea-documents.txt",
+          "line": 280,
+          "text": "業務流れ図（WFA）           システム化対象業務におけるデータ処理の組織・場所・順序",
+          "mark": "〔公式〕"
+        }
+      ]
+    },
+    {
+      "claim": "6. フロー図の品質基準（フレームワークと実証された指針）",
+      "status": "根拠あり",
+      "note": "GoM（Becker ら）は6原則、7PMG（Mendling ら）は誤りやすさ・分かりにくさの実証研究から7つの指針を作った。SEQUAL の本文は届かず、7PMG の中の説明で代えた。",
+      "quotes": [
+        {
+          "file": "becker-2000-guidelines-of-modeling.txt",
+          "line": 111,
+          "end": 115,
+          "text": "These are the principles of correctness, relevance, economic efficiency, clarity, comparability, and systematic design",
+          "ja": "原則は、正しさ・関連性・経済性・明瞭さ・比較可能性・体系的な設計の6つ。",
+          "mark": "〔論文〕"
+        },
+        {
+          "file": "becker-2000-guidelines-of-modeling.txt",
+          "line": 170,
+          "end": 171,
+          "text": "A model includes elements without relevance, if they can be eliminated without loss of meaning for the model user.",
+          "ja": "取り除いても利用者にとって意味が失われない要素があれば、そのモデルは関連性の無い要素を含んでいる。",
+          "mark": "〔論文〕"
+        },
+        {
+          "file": "mendling-2010-7pmg.txt",
+          "line": 146,
+          "end": 150,
+          "text": "One prominent top-down quality framework is the SEQUAL framework [9,23]. It builds on semiotic theory",
+          "ja": "代表的なトップダウンの品質フレームワークが SEQUAL で、記号論に基づく。",
+          "mark": "〔論文〕"
+        },
+        {
+          "file": "mendling-2010-7pmg.txt",
+          "line": 418,
+          "text": "G1 Use as few elements in the model as possible.",
+          "ja": "G1 要素はできるだけ少なく",
+          "mark": "〔論文〕"
+        },
+        {
+          "file": "mendling-2010-7pmg.txt",
+          "line": 425,
+          "text": "G2 Minimize the routing paths per element.",
+          "ja": "G2 1要素あたりの出入りの線を最小に",
+          "mark": "〔論文〕"
+        },
+        {
+          "file": "mendling-2010-7pmg.txt",
+          "line": 430,
+          "text": "G3 Use one start and one end event.",
+          "ja": "G3 開始と終了は1つずつ",
+          "mark": "〔論文〕"
+        },
+        {
+          "file": "mendling-2010-7pmg.txt",
+          "line": 435,
+          "text": "G4 Model as structured as possible.",
+          "ja": "G4 できるだけ構造化する（分岐と合流を対にする）",
+          "mark": "〔論文〕"
+        },
+        {
+          "file": "mendling-2010-7pmg.txt",
+          "line": 441,
+          "text": "G5 Avoid OR routing elements.",
+          "ja": "G5 OR の分岐を避ける",
+          "mark": "〔論文〕"
+        },
+        {
+          "file": "mendling-2010-7pmg.txt",
+          "line": 445,
+          "text": "G6 Use verb-object activity labels.",
+          "ja": "G6 作業名は「動詞＋目的語」で",
+          "mark": "〔論文〕"
+        },
+        {
+          "file": "mendling-2010-7pmg.txt",
+          "line": 451,
+          "text": "G7 Decompose the model if it has more than 50 elements.",
+          "ja": "G7 50要素を超えたら分割する",
+          "mark": "〔論文〕"
+        },
+        {
+          "file": "mendling-2010-7pmg.txt",
+          "line": 453,
+          "end": 454,
+          "text": "For models with more than 50 elements the error probability tends to be higher than 50% [44].",
+          "ja": "50要素を超えるモデルでは、誤りを含む確率が50%を超える傾向がある。",
+          "mark": "〔論文〕測定あり"
+        }
+      ]
+    },
+    {
+      "claim": "7. 指針の効き方の強さ（どれが効くか・実証の厚さ）",
+      "status": "一部のみ",
+      "note": "優先順位は実務者21人の順位づけだけで、著者自身が根拠は小さいと書いている。",
+      "quotes": [
+        {
+          "file": "mendling-2010-7pmg.txt",
+          "line": 806,
+          "end": 807,
+          "text": "G4 is considered as the guideline with the most potential to improve a process model’s understandability",
+          "ja": "G4（構造化）が、分かりやすさを高める見込みが最も大きい指針と見なされた。",
+          "mark": "〔論文〕"
+        },
+        {
+          "file": "mendling-2010-7pmg.txt",
+          "line": 889,
+          "end": 890,
+          "text": "the derived ranking has a small empirical…as it relies on the involvement of 21 process modelers only.",
+          "ja": "導いた順位は21人のモデラーにしか依っておらず、実証の基盤は小さい。",
+          "mark": "〔論文〕"
+        },
+        {
+          "file": "mendling-2007-what-makes-understandable.txt",
+          "line": 27,
+          "end": 30,
+          "text": "the number of arcs in models has an important influence on understandability.",
+          "ja": "モデルの線（アーク）の数が分かりやすさに大きく影響する。",
+          "mark": "〔論文〕測定あり"
+        },
+        {
+          "file": "mendling-2007-what-makes-understandable.txt",
+          "line": 28,
+          "end": 29,
+          "text": "self-assessment of modeling competence appears to be invalid",
+          "ja": "モデリング能力の自己評価は当てにならないようだ。",
+          "mark": "〔論文〕測定あり"
+        }
+      ]
+    },
+    {
+      "claim": "8. 表記・ラベルの基準",
+      "status": "根拠あり",
+      "note": "動詞＋目的語の作業名は 7PMG・Silver・実務記事の3者で一致。IPA は担当を組織名でなくロールで書くとする。",
+      "quotes": [
+        {
+          "file": "silver-bpmn-style-rules.md",
+          "line": 51,
+          "text": "All activities – including subprocesses – should be labeled, preferably as an action, verb-object.",
+          "ja": "サブプロセスを含め、すべての作業にラベルを付ける。できれば動作として、動詞＋目的語で。",
+          "mark": "〔本人〕"
+        },
+        {
+          "file": "silver-bpmn-style-rules.md",
+          "line": 53,
+          "text": "Message flows should be labeled as the name of the message, a noun, not as an action (verb) or state (adjective phrase).",
+          "ja": "メッセージフローには、動作（動詞）や状態（形容詞句）ではなく、メッセージの名前（名詞）を付ける。",
+          "mark": "〔本人〕"
+        },
+        {
+          "file": "silver-bpmn-style-rules.md",
+          "line": 73,
+          "text": "The intent of the rule is no more than 10 activities in a single process level, so when printed it fits on a single page.",
+          "ja": "規則の意図は、1つの階層に作業を10個までにし、印刷して1ページに収まるようにすること。",
+          "mark": "〔本人〕"
+        },
+        {
+          "file": "kashika-flowchart-10tips.md",
+          "line": 141,
+          "text": "⑥作業名は「何を＋どうする」「請求書を発行する」のように目的語と動詞で書く",
+          "mark": "〔まとめ〕宣伝あり"
+        },
+        {
+          "file": "ipa-2019-youken-guide.txt",
+          "line": 19790,
+          "text": "担当部署（アクター）は、具体的な組織名ではなく、役割（ロール）で記載する。",
+          "mark": "〔公式〕"
+        }
+      ]
+    },
+    {
+      "claim": "9. どこで失敗するか（誤り・漏れ）",
+      "status": "根拠あり",
+      "note": "現場のモデル集の誤り率は10〜20%。IPA は例外処理の洗い出し漏れを最重要の失敗点に挙げる。",
+      "quotes": [
+        {
+          "file": "mendling-2010-7pmg.txt",
+          "line": 219,
+          "end": 220,
+          "text": "It is confirmed by high error rates in real- world modeling projects (between 10% and 20%) [41,42,43].",
+          "ja": "実際のモデリング案件の誤り率の高さ（10%〜20%）がこれを裏づけている。",
+          "mark": "〔論文〕"
+        },
+        {
+          "file": "ipa-2019-youken-guide.txt",
+          "line": 19763,
+          "end": 19765,
+          "text": "上記のような例外処理を漏れなく洗い出すことは業務フ ロー作成における重要目的であり、その精度が以降のシステム開発の品質に大きく影 響する。",
+          "mark": "〔公式〕"
+        },
+        {
+          "file": "ipa-2019-youken-guide.txt",
+          "line": 19753,
+          "end": 19754,
+          "text": "まず、各業務機能における通常処理（月次の業務量の大半（例えば 95％以上）を占め る業務パターンなど）の業務フローを記載する。",
+          "mark": "〔公式〕"
+        },
+        {
+          "file": "ipa-2019-youken-guide.txt",
+          "line": 19785,
+          "end": 19786,
+          "text": "分岐が発生する場合、それぞれの発生頻度（滅多に発生しない事象かどうか）、作業負 荷、時刻・季節などにより発生頻度に変動がある場合にはその分布を確認する。",
+          "mark": "〔公式〕"
+        }
+      ]
+    },
+    {
+      "claim": "10. 業務プロセスそのものの品質と、フロー図に添える文書",
+      "status": "一部のみ",
+      "note": "ISO 9001 のプロセスの定義、ログから作るモデルの4つの品質軸、J-SOX の3点セットに準じた文書群。ISO の公式の解説（N1289）と J-SOX 実施基準の本文は届いていない。",
+      "quotes": [
+        {
+          "file": "dnv-iso9001-2015-guidance.txt",
+          "line": 260,
+          "end": 261,
+          "text": "“a set of interrelated or interacting activities which transforms",
+          "ja": "（プロセスとは）「インプットをアウトプットに変換する、相互に関連する又は相互に作用する一連の活動」",
+          "mark": "〔まとめ〕"
+        },
+        {
+          "file": "aalst-2011-process-mining-manifesto.txt",
+          "line": 1073,
+          "end": 1074,
+          "text": "there are four competing quality dimensions: (a) fitness, (b) simplicity, (c) precision, and (d) generalization.",
+          "ja": "競合する4つの品質の軸がある：適合度・単純さ・精度・汎化。",
+          "mark": "〔論文〕"
+        },
+        {
+          "file": "asist-bpmn-government-granularity.txt",
+          "line": 174,
+          "end": 175,
+          "text": "BPMを進めるに当たっては、民間のJ-SOX法対応資料である内部統制報告書（業務フロー、業務記述書、リス ク統制対応表）に準じたものを作成しておくと、業務改善に係る体系的な整理が容易である。",
+          "mark": "〔公式〕"
+        }
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "1枚の図に載せる量の上限",
+      "quotes": [
+        {
+          "file": "mendling-2010-7pmg.txt",
+          "line": 451,
+          "text": "G7 Decompose the model if it has more than 50 elements.",
+          "ja": "50要素を超えたら分割する",
+          "who": "Mendling ら 2010（誤り率の実証から）"
+        },
+        {
+          "file": "silver-bpmn-style-rules.md",
+          "line": 73,
+          "text": "The intent of the rule is no more than 10 activities in a single process level, so when printed it fits on a single page.",
+          "ja": "1階層に作業10個まで（印刷して1ページ）",
+          "who": "Silver（BPMN Method and Style）"
+        }
+      ]
+    },
+    {
+      "topic": "細かさの基準（何を1つの箱にするか）",
+      "quotes": [
+        {
+          "file": "ishikawa-2026-bpr-handbook.txt",
+          "line": 515,
+          "end": 516,
+          "text": "そのため、記述する粒度は「作業単 位」とすること。",
+          "who": "石川県 BPR ハンドブック（BPR 目的）"
+        },
+        {
+          "file": "ipa-2019-youken-guide.txt",
+          "line": 19710,
+          "text": "業務フローは、三階層で業務を表現したときの二階層目を中心に業務を表現したもの",
+          "who": "IPA 要件定義ガイド（要件定義目的）"
+        }
+      ]
+    }
+  ],
+  "unreached": [
+    "Dumas, La Rosa, Mendling, Reijers『Fundamentals of Business Process Management』（有料）— 情報の集め方の章の本体",
+    "Rummler & Brache『Improving Performance』（有料）— スイムレーン（関係図・機能横断のプロセス図）の原典とされる本",
+    "Rother & Shook『Learning to See』（有料）— バリューストリームマップの原典",
+    "SIPOC の由来（Wikipedia の記述は出典が付いておらず、原典に届かなかった）",
+    "SEQUAL の本文（Krogstie の事典の項目は取得したが、本文の大半がフォントの都合で読めなかった）",
+    "ISO/TC 176/SC 2 N1289『ISO 9001:2015 のプロセスアプローチ』の公式版（転載のコピーしか見つからなかった）",
+    "金融庁『財務報告に係る内部統制の評価及び監査に関する実施基準』の本文（業務の流れ図・業務記述書・リスクと統制の対応の例）",
+    "OMG の BPMN 2.0.2 仕様書（ISO/IEC 19510）— 大部で今回は取得しなかった",
+    "Mendling・Neumann・van der Aalst『Understanding the occurrence of errors in process models』（7PMG の誤り率の元の研究）。OpenAlex が 429 で止まり、前へのたどりもできなかった"
+  ]
+}
